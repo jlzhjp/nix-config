@@ -39,7 +39,7 @@
 
       status = {
         disabled = false;
-        symbol = "x";
+        symbol = "exit ";
       };
     };
   };
