@@ -6,9 +6,17 @@
       df = "df -h";
       du = "du -h";
       grep = "grep --color=auto";
-      la = "ls -A --color=auto --group-directories-first --human-readable";
-      ll = "ls -l --color=auto --group-directories-first --human-readable";
-      ls = "ls --color=auto --group-directories-first --human-readable";
+      la = "eza --all --group-directories-first --git --long";
+      ll = "eza --group-directories-first --git --long";
+      ls = "eza --group-directories-first";
+      tree = "eza --tree";
+    };
+
+    shellAbbrs = {
+      gs = "git status --short";
+      jv = "just verify";
+      js = "just switch";
+      nf = "nix flake update";
     };
   };
 

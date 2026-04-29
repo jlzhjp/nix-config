@@ -7,12 +7,17 @@
 
 {
   imports = [
+    ./modules/atuin.nix
+    ./modules/direnv.nix
+    ./modules/eza.nix
     ./modules/fish.nix
+    ./modules/fzf.nix
     ./modules/git.nix
     ./modules/neovim.nix
     ./modules/nh.nix
     ./modules/starship.nix
     ./modules/tmux.nix
+    ./modules/zoxide.nix
   ];
 
   home = {
@@ -31,7 +36,6 @@
       pkgs.fennel-ls
       pkgs.fd
       pkgs.fnlfmt
-      pkgs.fzf
       pkgs.go
       pkgs.gopls
       pkgs.gh
