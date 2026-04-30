@@ -37,6 +37,7 @@
       pkgs.fastfetch
       pkgs.fennel-ls
       pkgs.fd
+      pkgs.fish-lsp
       pkgs.fnlfmt
       pkgs.go
       pkgs.gopls

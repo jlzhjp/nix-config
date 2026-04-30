@@ -18,13 +18,14 @@
 (when (not vim.g.vscode)
   ((. plugins :add))
   (vim.lsp.enable [:clangd
-                   :rust_analyzer
                    :fennel_ls
+                   :fish_lsp
                    :gopls
                    :harper_ls
                    :hls
                    :nixd
                    :racket_langserver
+                   :rust_analyzer
                    :ty
                    :yamlls])
   (setup-modules [[:mini.basics {:options {:extra_ui true}}]
