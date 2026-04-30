@@ -25,7 +25,7 @@ _:
       bind T break-pane
       bind o kill-pane -a
       bind n split-window -v -c "#{pane_current_path}"
-      bind c kill-pane
+      bind c new-window -c "#{pane_current_path}"
 
       # Vim Ctrl-w style window management.
       bind s split-window -v -c "#{pane_current_path}"
@@ -37,10 +37,10 @@ _:
       # Vim Ctrl-w style moving windows.
       bind r rotate-window -D
       bind R rotate-window -U
-      bind H swap-pane -t "{left}"
-      bind J swap-pane -t "{bottom}"
-      bind K swap-pane -t "{top}"
-      bind L swap-pane -t "{right}"
+      bind H if -F "#{pane_at_left}" "" "move-pane -bh -t '{top-left}'"
+      bind J if -F "#{pane_at_bottom}" "" "move-pane -v -t '{bottom-right}'"
+      bind K if -F "#{pane_at_top}" "" "move-pane -bv -t '{top-left}'"
+      bind L if -F "#{pane_at_right}" "" "move-pane -h -t '{bottom-right}'"
 
       # Vim Ctrl-w style navigation between windows.
       bind C-a select-pane -t "{next}"
