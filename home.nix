@@ -17,6 +17,7 @@
     ./modules/nh.nix
     ./modules/starship.nix
     ./modules/tmux.nix
+    ./modules/wallpapers.nix
     ./modules/zoxide.nix
   ];
 
