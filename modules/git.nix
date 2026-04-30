@@ -2,15 +2,10 @@
   programs.git = {
     enable = true;
     settings = {
-      core.pager = "bat";
+      core.pager = "delta";
       delta.navigate = true;
       interactive.diffFilter = "delta --color-only";
-      pager = {
-        diff = "delta";
-        log = "delta";
-        reflog = "delta";
-        show = "delta";
-      };
+      merge.conflictStyle = "zdiff3";
       user = {
         name = "akari";
         email = "jvjdev@gmail.com";

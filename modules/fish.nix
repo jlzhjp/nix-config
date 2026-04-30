@@ -2,6 +2,7 @@
   programs.fish = {
     enable = true;
     shellAliases = {
+      cat = "bat";
       diff = "diff --color=auto";
       df = "df -h";
       du = "du -h";
