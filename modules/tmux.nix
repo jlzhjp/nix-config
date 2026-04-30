@@ -20,28 +20,54 @@ _:
       # Enable true color when the outer terminal supports it.
       set -as terminal-features ",xterm-256color:RGB"
 
-      # Keep new splits in the current working directory.
-      bind | split-window -h -c "#{pane_current_path}"
-      bind - split-window -v -c "#{pane_current_path}"
+      # Vim Ctrl-w style tab shortcuts.
+      # In tmux terms, a Vim tabview maps to a tmux window and a Vim window maps to a tmux pane.
+      bind T break-pane
+      bind o kill-pane -a
+      bind n split-window -v -c "#{pane_current_path}"
+      bind c kill-pane
 
-      # Vim-friendly split keys.
-      bind v split-window -h -c "#{pane_current_path}"
+      # Vim Ctrl-w style window management.
       bind s split-window -v -c "#{pane_current_path}"
+      bind v split-window -h -c "#{pane_current_path}"
+      bind q kill-pane
+      bind m select-pane -m
 
-      # Reload config without restarting tmux.
-      bind r source-file ~/.config/tmux/tmux.conf \; display-message "tmux.conf reloaded"
+      # Vim Ctrl-w style moving windows.
+      bind r rotate-window -D
+      bind R rotate-window -U
+      bind H swap-pane -t "{left}"
+      bind J swap-pane -t "{bottom}"
+      bind K swap-pane -t "{top}"
+      bind L swap-pane -t "{right}"
 
-      # Vim-style pane navigation.
+      # Vim Ctrl-w style navigation between windows.
+      bind C-a select-pane -t "{next}"
+      bind C-w select-pane -t "{next}"
+      bind w select-pane -t "{next}"
+      bind Up select-pane -U
+      bind Down select-pane -D
+      bind Left select-pane -L
+      bind Right select-pane -R
       bind h select-pane -L
       bind j select-pane -D
       bind k select-pane -U
       bind l select-pane -R
+      bind p last-pane
+      bind t select-pane -t "{top-left}"
+      bind b select-pane -t "{bottom-right}"
 
-      # Resize panes with Shift + hjkl.
-      bind -r H resize-pane -L 5
-      bind -r J resize-pane -D 5
-      bind -r K resize-pane -U 5
-      bind -r L resize-pane -R 5
+      # Vim Ctrl-w style resizing windows.
+      bind = select-layout tiled
+      bind _ resize-pane -y 100%
+      bind | resize-pane -x 100%
+      bind -r > resize-pane -R 5
+      bind -r < resize-pane -L 5
+      bind -r - resize-pane -U 5
+      bind -r + resize-pane -D 5
+
+      # Reload config without restarting tmux.
+      bind C-r source-file ~/.config/tmux/tmux.conf \; display-message "tmux.conf reloaded"
 
       # Alt-h / Alt-l moves between windows. Tab jumps to the last window.
       bind -n M-h previous-window
@@ -57,7 +83,6 @@ _:
       bind -T copy-mode-vi Escape send -X cancel
       bind -T copy-mode-vi q send -X cancel
 
-      bind q display-panes
       bind z resize-pane -Z
       bind x kill-pane
       bind X kill-window
