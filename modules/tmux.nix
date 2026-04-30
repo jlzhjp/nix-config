@@ -31,6 +31,7 @@ _:
       bind s split-window -v -c "#{pane_current_path}"
       bind v split-window -h -c "#{pane_current_path}"
       bind q kill-pane
+      bind x swap-pane -D
       bind m select-pane -m
 
       # Vim Ctrl-w style moving windows.
@@ -58,13 +59,14 @@ _:
       bind b select-pane -t "{bottom-right}"
 
       # Vim Ctrl-w style resizing windows.
-      bind = select-layout tiled
+      bind = select-layout -E
+      bind u select-layout -o
       bind _ resize-pane -y 100%
       bind | resize-pane -x 100%
-      bind -r > resize-pane -R 5
-      bind -r < resize-pane -L 5
-      bind -r - resize-pane -U 5
-      bind -r + resize-pane -D 5
+      bind -r > resize-pane -x "#{e|+:#{pane_width},5}"
+      bind -r < resize-pane -x "#{e|-:#{pane_width},5}"
+      bind -r - resize-pane -y "#{e|-:#{pane_height},5}"
+      bind -r + resize-pane -y "#{e|+:#{pane_height},5}"
 
       # Reload config without restarting tmux.
       bind C-r source-file ~/.config/tmux/tmux.conf \; display-message "tmux.conf reloaded"
@@ -84,7 +86,6 @@ _:
       bind -T copy-mode-vi q send -X cancel
 
       bind z resize-pane -Z
-      bind x kill-pane
       bind X kill-window
       bind $ command-prompt -I "#S" "rename-session '%%'"
       bind , command-prompt -I "#W" "rename-window '%%'"
