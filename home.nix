@@ -41,6 +41,7 @@
       pkgs.go
       pkgs.gopls
       pkgs.gh
+      pkgs.git-filter-repo
       pkgs.gnumake
       pkgs.harper
       pkgs.just

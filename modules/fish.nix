@@ -14,8 +14,6 @@
 
     shellAbbrs = {
       gs = "git status --short";
-      jv = "just verify";
-      js = "just switch";
       nf = "nix flake update";
     };
   };

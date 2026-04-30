@@ -17,7 +17,8 @@
 
 (when (not vim.g.vscode)
   ((. plugins :add))
-  (vim.lsp.enable [:rust_analyzer
+  (vim.lsp.enable [:clangd
+                   :rust_analyzer
                    :fennel_ls
                    :gopls
                    :harper_ls
