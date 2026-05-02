@@ -7,7 +7,6 @@
 
 {
   imports = [
-    ./modules/atuin.nix
     ./modules/direnv.nix
     ./modules/eza.nix
     ./modules/fish.nix
