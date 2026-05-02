@@ -12,6 +12,7 @@
     ./modules/fish.nix
     ./modules/fzf.nix
     ./modules/git.nix
+    ./modules/fonts.nix
     ./modules/neovim.nix
     ./modules/nh.nix
     ./modules/starship.nix
