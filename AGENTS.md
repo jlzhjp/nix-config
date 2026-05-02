@@ -12,6 +12,8 @@
 - Prefer `pkgs.stdenv.hostPlatform.system` over `pkgs.system`; `pkgs.system` emits an evaluation warning in current nixpkgs.
 - Configure Git identity with `programs.git.settings.user.name` and `programs.git.settings.user.email`; `programs.git.userName` and `programs.git.userEmail` are renamed aliases that emit warnings.
 - Atuin is intentionally not managed here; do not re-add `programs.atuin` or import an Atuin module unless the user asks.
+- Keep repository automation in `.github`; CI should install Nix with flakes enabled before running `nix flake check`.
+- Pin GitHub Actions to commit hashes and keep the source tag in a trailing comment so Renovate can update the pinned SHA.
 - Preserve Vim-like tmux pane resize semantics for Prefix + `>`, `<`, `+`, and `-`: change the current pane's absolute width/height. Do not pass raw tmux format expressions directly to `resize-pane -x/-y`; expand computed sizes first so `resize-pane` receives literal numbers.
 - Do not revert user changes or unrelated work in this repository.
 - Every time you make an edit or refactor, update this `AGENTS.md` with any repo-specific lesson learned or rule that would prevent repeating a mistake in future work. Also update persistent memory when the lesson should survive outside this repository.
