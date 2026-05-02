@@ -9,6 +9,7 @@
 - Keep user-facing Home Manager code in modules under `modules/`; keep application source files under `config/`.
 - Add simple CLI tools to `home.packages`; use `programs.*` modules only when configuring the program beyond installation.
 - Add formatter-only tools such as Prettier directly to `home.packages` unless repository-local formatter configuration is also needed.
+- Keep install-only shell tools such as ShellCheck and shfmt in `home.packages`.
 - Add install-only font packages such as Nerd Fonts directly to `home.packages`.
 - Keep standalone font packages in `modules/fonts.nix` once they are part of the maintained set.
 - Enable `fonts.fontconfig` when managing user fonts so fontconfig-based applications can discover Home Manager-installed fonts.

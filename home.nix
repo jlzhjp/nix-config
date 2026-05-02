@@ -58,6 +58,8 @@
       pkgs.rclone
       pkgs.ripgrep
       pkgs.rustup
+      pkgs.shellcheck
+      pkgs.shfmt
       pkgs.statix
       pkgs.tree-sitter
       pkgs.ty
