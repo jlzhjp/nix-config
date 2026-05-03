@@ -7,7 +7,6 @@
 - Do not reintroduce Neovim runtime Fennel compilation. Home Manager builds `config/nvim/init.fnl` into the installed Neovim `init.lua`.
 - Do not manage `~/.config/nvim` as one immutable directory. Manage `nvim/init.lua` (generated from `config/nvim/init.fnl`) and explicit subpaths like `nvim/queries`, while keeping the `~/.config/nvim` root writable so `vim.pack` can create its untracked lockfile there.
 - Keep user-facing Home Manager code in modules under `modules/`; keep application source files under `config/`.
-- Keep Niri desktop integration in `modules/niri.nix`; keep supporting application configs under `config/`.
 - Add simple CLI tools to `home.packages`; use `programs.*` modules only when configuring the program beyond installation.
 - Add formatter-only tools such as Prettier directly to `home.packages` unless repository-local formatter configuration is also needed.
 - Keep install-only shell tools such as ShellCheck and shfmt in `home.packages`.
