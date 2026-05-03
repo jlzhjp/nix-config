@@ -13,7 +13,7 @@
       Type = "simple";
       ExecCondition = "${pkgs.runtimeShell} -c '${pkgs.rclone}/bin/rclone listremotes | ${pkgs.gnugrep}/bin/grep -Fx onedrive:'";
       ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p %h/Wallpapers";
-      ExecStart = "${pkgs.rclone}/bin/rclone mount onedrive:Wallpapers %h/Wallpapers --vfs-cache-mode writes";
+      ExecStart = "${pkgs.rclone}/bin/rclone mount onedrive:Wallpapers %h/Wallpapers --vfs-cache-mode full";
       ExecStop = "${pkgs.fuse3}/bin/fusermount3 -u %h/Wallpapers";
       Restart = "on-failure";
       RestartSec = "10s";
