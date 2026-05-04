@@ -8,6 +8,8 @@
 - Do not manage `~/.config/nvim` as one immutable directory. Manage `nvim/init.lua` (generated from `config/nvim/init.fnl`) and explicit subpaths like `nvim/queries`, while keeping the `~/.config/nvim` root writable so `vim.pack` can create its untracked lockfile there.
 - Keep user-facing Home Manager code in modules under `modules/`; keep application source files under `config/`.
 - Add simple CLI tools to `home.packages`; use `programs.*` modules only when configuring the program beyond installation.
+- Prefer nixpkgs Zed as `pkgs.zed-editor` in `home.packages` unless the user explicitly asks for the upstream `zed-industries/zed` flake.
+- Add Racket from nixpkgs as `pkgs.racket` in `home.packages`.
 - Add formatter-only tools such as Prettier directly to `home.packages` unless repository-local formatter configuration is also needed.
 - Keep install-only shell tools such as ShellCheck and shfmt in `home.packages`.
 - Add install-only font packages such as Nerd Fonts directly to `home.packages`.
@@ -16,6 +18,8 @@
 - Enable `fonts.fontconfig` when managing user fonts so fontconfig-based applications can discover Home Manager-installed fonts.
 - Keep Flatpak font filesystem access in `modules/fonts.nix` as a user override activation step after `writeBoundary`, so Flatpak apps can read `/nix/store` fonts and user fontconfig. Flatpak itself is not managed by Nix here; call the ambient `flatpak` command instead of `pkgs.flatpak`.
 - Keep generated files out of the source tree unless the user explicitly asks otherwise.
+- Enable Home Manager's generic Linux target with `targets.genericLinux.enable = true;` for this non-NixOS environment.
+- Enable Home Manager's XDG integration with `xdg.enable = true;` at the top level in `home.nix`.
 - Prefer `pkgs.stdenv.hostPlatform.system` over `pkgs.system`; `pkgs.system` emits an evaluation warning in current nixpkgs.
 - Configure Git identity with `programs.git.settings.user.name` and `programs.git.settings.user.email`; `programs.git.userName` and `programs.git.userEmail` are renamed aliases that emit warnings.
 - Atuin is intentionally not managed here; do not re-add `programs.atuin` or import an Atuin module unless the user asks.

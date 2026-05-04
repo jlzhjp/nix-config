@@ -56,6 +56,7 @@
       pkgs.pkg-config
       pkgs.prettier
       pkgs.rclone
+      pkgs.racket
       pkgs.ripgrep
       pkgs.rustup
       pkgs.shellcheck
@@ -66,10 +67,7 @@
       pkgs.uv
       pkgs.yaml-language-server
       pkgs.yq
-    ];
-
-    sessionPath = [
-      "${config.home.profileDirectory}/bin"
+      pkgs.zed-editor
     ];
 
     sessionVariables = {
@@ -80,4 +78,8 @@
   };
 
   programs.home-manager.enable = true;
+
+  xdg.enable = true;
+
+  targets.genericLinux.enable = true;
 }
