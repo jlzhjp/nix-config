@@ -14,6 +14,7 @@
 - Keep standalone font packages in `modules/fonts.nix` once they are part of the maintained set.
 - Use `pkgs.nerd-fonts.fira-code` for Fira Code Nerd Font.
 - Enable `fonts.fontconfig` when managing user fonts so fontconfig-based applications can discover Home Manager-installed fonts.
+- Keep Flatpak font filesystem access in `modules/fonts.nix` as a user override activation step after `writeBoundary`, so Flatpak apps can read `/nix/store` fonts and user fontconfig. Flatpak itself is not managed by Nix here; call the ambient `flatpak` command instead of `pkgs.flatpak`.
 - Keep generated files out of the source tree unless the user explicitly asks otherwise.
 - Prefer `pkgs.stdenv.hostPlatform.system` over `pkgs.system`; `pkgs.system` emits an evaluation warning in current nixpkgs.
 - Configure Git identity with `programs.git.settings.user.name` and `programs.git.settings.user.email`; `programs.git.userName` and `programs.git.userEmail` are renamed aliases that emit warnings.
