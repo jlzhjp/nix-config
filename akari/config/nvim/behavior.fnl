@@ -90,10 +90,6 @@
                                                                                 :highlights)
                                                   (vim.treesitter.start args.buf))
                                                 (when (vim.treesitter.query.get lang
-                                                                                :indents)
-                                                  (set vim.opt_local.indentexpr
-                                                       "v:lua.require(\"nvim-treesitter\").indentexpr()"))
-                                                (when (vim.treesitter.query.get lang
                                                                                 :folds)
                                                   (set vim.opt_local.foldmethod
                                                        :expr)
