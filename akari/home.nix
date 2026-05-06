@@ -25,48 +25,40 @@
     homeDirectory = "/var/home/akari";
     stateVersion = "25.11";
 
-    packages = [
-      pkgs.actionlint
-      pkgs.bat
-      pkgs.bun
-      pkgs.clang
-      pkgs.clang-tools
+    packages = with pkgs; [
+      actionlint
+      bat
+      bun
+      clang
+      clang-tools
       inputs.codex-cli-nix.packages.${pkgs.stdenv.hostPlatform.system}.default
-      pkgs.deadnix
-      pkgs.delta
-      pkgs.fastfetch
-      pkgs.fennel-ls
-      pkgs.fd
-      pkgs.fish-lsp
-      pkgs.fnlfmt
-      pkgs.go
-      pkgs.gopls
-      pkgs.gh
-      pkgs.git-filter-repo
-      pkgs.gnumake
-      pkgs.harper
-      pkgs.just
-      pkgs.luaPackages.fennel
-      pkgs.nixd
-      pkgs.nixfmt
-      pkgs.nix-output-monitor
-      pkgs.nodejs
-      pkgs.pnpm
-      pkgs.pkg-config
-      pkgs.prettier
-      pkgs.rclone
-      pkgs.racket
-      pkgs.ripgrep
-      pkgs.rustup
-      pkgs.shellcheck
-      pkgs.shfmt
-      pkgs.statix
-      pkgs.tree-sitter
-      pkgs.ty
-      pkgs.uv
-      pkgs.yaml-language-server
-      pkgs.yq
-      pkgs.zed-editor
+      delta
+      fastfetch
+      fd
+      fish-lsp
+      go
+      gopls
+      gh
+      git-filter-repo
+      gnumake
+      harper
+      just
+      nodejs
+      pnpm
+      pkg-config
+      prettier
+      rclone
+      racket
+      ripgrep
+      rustup
+      shellcheck
+      shfmt
+      tree-sitter
+      ty
+      uv
+      yaml-language-server
+      yq
+      zed-editor
     ];
 
     sessionVariables = {

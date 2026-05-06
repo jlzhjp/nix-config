@@ -20,6 +20,18 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in
     {
+      devShells.${system}.default = pkgs.mkShell {
+        packages = with pkgs; [
+          deadnix
+          fennel-ls
+          fnlfmt
+          luaPackages.fennel
+          nixd
+          nixfmt
+          statix
+        ];
+      };
+
       fedoraNixConfigurations."atri" = import ./atri/system.nix {
         inherit inputs pkgs;
       };
