@@ -76,9 +76,10 @@
     };
   };
 
-  programs.home-manager.enable = true;
-
   xdg.enable = true;
 
-  targets.genericLinux.enable = true;
+  targets.genericLinux = {
+    enable = true;
+    gpu.enable = false;
+  };
 }
