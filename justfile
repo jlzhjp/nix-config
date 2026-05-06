@@ -3,7 +3,10 @@ default: switch
 verify: format lint
 
 switch:
+    @echo "Rebuilding home manager"
     home-manager switch --flake .#akari
+    @echo "Rebuilding system components"
+    sudo fedora-nix-rebuild .#atri
 
 update-packages:
     nix flake update
