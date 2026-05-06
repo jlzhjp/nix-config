@@ -65,7 +65,11 @@ just
 ## Layout
 
 - `flake.nix` exposes Home Manager and Fedora Nix system configurations.
-- `home.nix` contains the user profile, packages, and shared session settings.
-- `modules/` contains Home Manager modules for managed programs.
-- `config/` contains application source files used by those modules.
-- `config/nvim/init.fnl` is compiled by Home Manager into Neovim's `init.lua`.
+- `akari/home.nix` contains the `akari` Home Manager profile, packages, and
+  shared session settings.
+- `akari/modules/` contains Home Manager modules for managed programs.
+- `akari/config/` contains application source files used by those modules.
+- `akari/config/nvim/init.fnl` is compiled by Home Manager into Neovim's
+  `init.lua`.
+- `atri/system.nix` contains Fedora system components for host `atri`,
+  including the system prefix and graphics driver build environments.
