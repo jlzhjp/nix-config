@@ -8,7 +8,7 @@
   },
   "lockFileMaintenance": {
     "enabled": true,
-    "schedule": ["* 2-3 * * *"],
+    "schedule": ["* 22-23,0-4 * * *"],
     "automerge": true
   },
   "packageRules": [
