@@ -54,7 +54,8 @@
                   [:mini.notify]
                   [:which-key]])
   ((. (require :blink.cmp) :setup) {:completion {:list {:selection {:preselect false}}}})
-  ((. (require :conform) :setup) {:default_format_opts {:lsp_format :fallback}})
+  ((. (require :conform) :setup) {:default_format_opts {:lsp_format :fallback}
+                                  :formatters_by_ft {:nix [:nixfmt]}})
   (vim.lsp.config :racket_langserver {:filetypes [:racket]})
   (vim.lsp.config :yamlls
                   {:settings {:yaml {:schemaStore {:enable false :url ""}
