@@ -31,6 +31,8 @@
       bun
       clang
       clang-tools
+      coq
+      coqPackages.coq-lsp
       inputs.codex-cli-nix.packages.${pkgs.stdenv.hostPlatform.system}.default
       delta
       fastfetch
