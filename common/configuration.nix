@@ -124,11 +124,19 @@
   users.users = {
     akari = {
       description = "Akari";
-      extraGroups = [ "wheel" ];
+      extraGroups = [
+        "docker"
+        "wheel"
+      ];
       isNormalUser = true;
       shell = pkgs.fish;
     };
     root.hashedPassword = "!";
+  };
+
+  virtualisation = {
+    docker.enable = true;
+    podman.enable = true;
   };
 
   zramSwap = {
