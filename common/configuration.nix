@@ -66,12 +66,22 @@
 
   networking.networkmanager.enable = true;
 
-  nix.settings = {
-    experimental-features = [
-      "flakes"
-      "nix-command"
-    ];
-    substituters = [ "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store" ];
+  nix = {
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
+    optimise.automatic = true;
+    settings = {
+      auto-optimise-store = true;
+      experimental-features = [
+        "flakes"
+        "nix-command"
+      ];
+      sandbox = true;
+      substituters = [ "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store" ];
+    };
   };
 
   nixpkgs.config.allowUnfree = true;
