@@ -14,7 +14,10 @@
     };
     loader = {
       efi.canTouchEfiVariables = true;
-      systemd-boot.enable = lib.mkForce false;
+      systemd-boot = {
+        editor = false;
+        enable = lib.mkForce false;
+      };
     };
     tmp = {
       useZram = true;
@@ -25,8 +28,10 @@
   console.useXkbConfig = true;
 
   environment.systemPackages = with pkgs; [
+    efibootmgr
     google-chrome
     neovim
+    smartmontools
   ];
 
   fonts.packages = with pkgs; [
@@ -41,7 +46,6 @@
       type = "fcitx5";
       fcitx5.addons = with pkgs; [
         fcitx5-gtk
-        fcitx5-mellow-themes
         fcitx5-mozc
         fcitx5-rime
         qt6Packages.fcitx5-configtool
@@ -64,6 +68,8 @@
 
   programs.fish.enable = true;
 
+  security.rtkit.enable = true;
+
   services = {
     desktopManager.plasma6.enable = true;
     displayManager.plasma-login-manager.enable = true;
@@ -76,9 +82,15 @@
       tunMode = true;
     };
     pipewire = {
+      alsa = {
+        enable = true;
+        support32Bit = true;
+      };
       enable = true;
+      jack.enable = true;
       pulse.enable = true;
     };
+    udisks2.enable = true;
     xserver.xkb = {
       layout = "us";
       options = "caps:swapescape";
