@@ -17,19 +17,19 @@
     "/dev/disk/by-uuid/aa1b90eb-c77c-44e5-9ea0-092e975d76de";
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/cryptroot";
+    { device = "/dev/mapper/cryptroot";
       fsType = "btrfs";
       options = [ "subvol=@" "compress=zstd:3" "noatime" ];
     };
 
   fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/cryptroot";
+    { device = "/dev/mapper/cryptroot";
       fsType = "btrfs";
       options = [ "subvol=@home" "compress=zstd:3" "noatime" ];
     };
 
   fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/cryptroot";
+    { device = "/dev/mapper/cryptroot";
       fsType = "btrfs";
       options = [ "subvol=@nix" "compress=zstd:3" "noatime" ];
     };
