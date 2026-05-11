@@ -123,17 +123,23 @@
 
   time.timeZone = "Asia/Tokyo";
 
-  users.users = {
-    akari = {
-      description = "Akari";
-      extraGroups = [
-        "docker"
-        "wheel"
-      ];
-      isNormalUser = true;
-      shell = pkgs.fish;
+  users = {
+    groups.akari.gid = 1000;
+
+    users = {
+      akari = {
+        description = "Akari";
+        extraGroups = [
+          "docker"
+          "wheel"
+        ];
+        group = "akari";
+        isNormalUser = true;
+        shell = pkgs.fish;
+        uid = 1000;
+      };
+      root.hashedPassword = "!";
     };
-    root.hashedPassword = "!";
   };
 
   virtualisation = {
