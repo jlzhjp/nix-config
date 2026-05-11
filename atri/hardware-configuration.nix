@@ -13,14 +13,13 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-  boot.initrd.luks.devices."cryptroot".device =
-    "/dev/disk/by-uuid/aa1b90eb-c77c-44e5-9ea0-092e975d76de";
-
   fileSystems."/" =
     { device = "/dev/mapper/cryptroot";
       fsType = "btrfs";
       options = [ "subvol=@" "compress=zstd:3" "noatime" ];
     };
+
+  boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-uuid/e01090e1-526b-4fa0-a337-f4a23f1aecc1";
 
   fileSystems."/home" =
     { device = "/dev/mapper/cryptroot";
