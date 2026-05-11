@@ -39,6 +39,7 @@
 
   environment.systemPackages = with pkgs; [
     efibootmgr
+    sbctl
     git
     google-chrome
     neovim
