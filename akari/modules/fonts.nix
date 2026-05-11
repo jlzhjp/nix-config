@@ -7,10 +7,12 @@
 {
   fonts.fontconfig.enable = true;
 
-  home.packages = [
-    pkgs.nerd-fonts.fira-code
-    pkgs.nerd-fonts.iosevka
-    pkgs.nerd-fonts.iosevka-term
+  home.packages = with pkgs; [
+    nunito
+    geist-font
+    nerd-fonts.fira-code
+    nerd-fonts.iosevka
+    nerd-fonts.iosevka-term
   ];
 
   home.activation.flatpakFontAccess = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
