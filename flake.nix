@@ -52,6 +52,8 @@
         ];
       };
 
+      formatter.${system} = pkgs.nixfmt;
+
       homeConfigurations.akari = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
