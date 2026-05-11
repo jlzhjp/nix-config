@@ -20,46 +20,58 @@
     stateVersion = "25.11";
 
     packages = with pkgs; [
-      actionlint
+      # AI assistants
+      gemini-cli
+      inputs.codex-cli-nix.packages.${pkgs.stdenv.hostPlatform.system}.default
+
+      # CLI tools
       bat
+      delta
+      fastfetch
+      fd
+      rclone
+      ripgrep
+      yq
+
+      # Development tools
+      gh
+      git-filter-repo
+      gnumake
+      just
+      pkg-config
+      tree-sitter
+
+      # Editors
+      vscode
+      zed-editor
+
+      # Language servers and formatters
+      actionlint
+      clang-tools
+      fish-lsp
+      gopls
+      harper
+      prettier
+      shellcheck
+      shfmt
+      ty
+      yaml-language-server
+
+      # Language toolchains
       bun
       clang
-      clang-tools
       (coq.withPackages (
         ps: with ps; [
           stdlib
           coq-lsp
         ]
       ))
-      inputs.codex-cli-nix.packages.${pkgs.stdenv.hostPlatform.system}.default
-      delta
-      fastfetch
-      fd
-      fish-lsp
       go
-      gopls
-      gh
-      git-filter-repo
-      gnumake
-      harper
-      just
       nodejs
       pnpm
-      pkg-config
-      prettier
-      rclone
       racket
-      ripgrep
       rustup
-      shellcheck
-      shfmt
-      tree-sitter
-      ty
       uv
-      yaml-language-server
-      yq
-      vscode
-      zed-editor
     ];
 
     sessionVariables = {
