@@ -73,5 +73,23 @@
           }
         ];
       };
+
+      nixosConfigurations.chii = nixpkgs.lib.nixosSystem {
+        inherit system;
+
+        modules = [
+          ./chii/configuration.nix
+          lanzaboote.nixosModules.lanzaboote
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = { inherit inputs; };
+              users.akari = ./akari/home.nix;
+            };
+          }
+        ];
+      };
     };
 }

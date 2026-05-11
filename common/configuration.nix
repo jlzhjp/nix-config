@@ -39,6 +39,7 @@
 
   environment.systemPackages = with pkgs; [
     efibootmgr
+    git
     google-chrome
     neovim
     smartmontools
