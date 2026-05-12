@@ -1,18 +1,20 @@
-{ ... }:
+_:
 
 {
-  services.flatpak.enable = true;
+  services.flatpak = {
+    enable = true;
 
-  services.flatpak.update.onActivation = true;
-  services.flatpak.uninstallUnmanaged = true;
+    update.onActivation = true;
+    uninstallUnmanaged = true;
 
-  services.flatpak.packages = [
-    "com.github.tchx84.Flatseal"
-    "com.github.xournalpp.xournalpp"
-    "com.obsproject.Studio"
-    "com.qq.QQ"
-    "com.tencent.WeChat"
-    "org.qbittorrent.qBittorrent"
-    "org.telegram.desktop"
-  ];
+    packages = [
+      "com.github.tchx84.Flatseal"
+      "com.github.xournalpp.xournalpp"
+      "com.obsproject.Studio"
+      "com.qq.QQ"
+      "com.tencent.WeChat"
+      "org.qbittorrent.qBittorrent"
+      "org.telegram.desktop"
+    ];
+  };
 }

@@ -8,30 +8,36 @@
   # imports = [ ./hardware-configuration.nix ];
 
   # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot = {
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
 
-  # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+    # Use latest kernel.
+    kernelPackages = pkgs.linuxPackages_latest;
+  };
 
   # Define your hostname.
-  networking.hostName = "nixos";
+  networking = {
+    hostName = "nixos";
 
-  # Configure network connections interactively with nmcli or nmtui.
-  networking.networkmanager.enable = true;
+    # Configure network connections interactively with nmcli or nmtui.
+    networkmanager.enable = true;
+  };
 
   # Muscle memory.
   services.xserver.xkb.options = "caps:swapescape";
   console.useXkbConfig = true;
 
   # Enable flakes.
-  nix.settings.experimental-features = [
-    "flakes"
-    "nix-command"
-  ];
+  nix.settings = {
+    experimental-features = [
+      "flakes"
+      "nix-command"
+    ];
 
-  # Configure mirror.
-  nix.settings.substituters = [ "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store" ];
+    # Configure mirror.
+    substituters = [ "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store" ];
+  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users = {
