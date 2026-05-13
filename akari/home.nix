@@ -57,6 +57,7 @@
       shellcheck
       shfmt
       ty
+      tinymist
       yaml-language-server
 
       # Language toolchains
