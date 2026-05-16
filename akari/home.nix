@@ -76,6 +76,8 @@
       EDITOR = "nvim";
       VISUAL = "nvim";
       MANPAGER = "nvim +Man!";
+      CC = "clang";
+      CXX = "clang++";
     };
   };
 
