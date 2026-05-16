@@ -78,8 +78,7 @@
                                   :callback (fn [args]
                                               (clear-tracked-terminal args.buf))})
     ;; Terminal Send Mappings
-    (vim.keymap.set :n :<LocalLeader>l send-line
-                    {:desc "Send Line to Term"})
+    (vim.keymap.set :n :<LocalLeader>l send-line {:desc "Send Line to Term"})
     (vim.keymap.set :x :<LocalLeader>v send-selection
                     {:desc "Send Selection to Term"})
     (vim.keymap.set :n :<LocalLeader>s send-top-sexp
