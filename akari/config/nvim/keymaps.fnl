@@ -15,6 +15,8 @@
         explore-at-file "<Cmd>lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<CR>"
         pick-added-hunks-buf "<Cmd>Pick git_hunks path=\"%\" scope=\"staged\"<CR>"
         pick-workspace-symbols-live "<Cmd>Pick lsp scope=\"workspace_symbol_live\"<CR>"]
+
+    ;; Editor / Directories
     (leader-maps nmap-leader
                  [[:ed "<Cmd>lua MiniFiles.open()<CR>" :Directory]
                   [:ef explore-at-file "File directory"]
@@ -29,8 +31,11 @@
                    (fn []
                      (let [winid (. (vim.fn.getloclist 0 {:winid true}) :winid)]
                        (vim.cmd (if (not= winid 0) :lclose :lopen))))
-                   "Location list"]
-                  [:f/ "<Cmd>Pick history scope=\"/\"<CR>" "\"/\" history"]
+                   "Location list"]])
+
+    ;; Find / Pick
+    (leader-maps nmap-leader
+                 [[:f/ "<Cmd>Pick history scope=\"/\"<CR>" "\"/\" history"]
                   ["f:" "<Cmd>Pick history scope=\":\"<CR>" "\":\" history"]
                   [:fa
                    "<Cmd>Pick git_hunks scope=\"staged\"<CR>"
@@ -71,8 +76,11 @@
                   [:fv
                    "<Cmd>Pick visit_paths cwd=\"\"<CR>"
                    "Visit paths (all)"]
-                  [:fV "<Cmd>Pick visit_paths<CR>" "Visit paths (cwd)"]
-                  [:la "<Cmd>lua vim.lsp.buf.code_action()<CR>" :Actions]
+                  [:fV "<Cmd>Pick visit_paths<CR>" "Visit paths (cwd)"]])
+
+    ;; LSP
+    (leader-maps nmap-leader
+                 [[:la "<Cmd>lua vim.lsp.buf.code_action()<CR>" :Actions]
                   [:ld
                    "<Cmd>lua vim.diagnostic.open_float()<CR>"
                    "Diagnostic popup"]
@@ -89,12 +97,23 @@
                    "Source definition"]
                   [:lt
                    "<Cmd>lua vim.lsp.buf.type_definition()<CR>"
-                   "Type definition"]
-                  [:tT "<Cmd>horizontal term<CR>" "Terminal (horizontal)"]
+                   "Type definition"]])
+
+    ;; Terminal
+    (leader-maps nmap-leader
+                 [[:tT "<Cmd>horizontal term<CR>" "Terminal (horizontal)"]
                   [:tt "<Cmd>vertical term<CR>" "Terminal (vertical)"]])
+
+    ;; Visual Mode LSP
     (leader-maps xmap-leader
                  [[:lf
                    "<Cmd>lua require(\"conform\").format()<CR>"
-                   "Format selection"]])))
+                   "Format selection"]])
+
+    ;; Surround
+    (vim.keymap.del :x :ys)
+    (vim.keymap.set :x :S ":<C-u>lua MiniSurround.add('visual')<CR>"
+                    {:silent true})
+    (vim.keymap.set :n :yss :ys_ {:remap true})))
 
 {: setup}

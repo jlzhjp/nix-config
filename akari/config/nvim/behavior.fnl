@@ -77,6 +77,7 @@
                                  {:group :latest-terminal-track
                                   :callback (fn [args]
                                               (clear-tracked-terminal args.buf))})
+    ;; Terminal Send Mappings
     (vim.keymap.set :n :<LocalLeader>l send-line
                     {:desc "Send Line to Term"})
     (vim.keymap.set :x :<LocalLeader>v send-selection
@@ -110,15 +111,8 @@
                                          :source :if_many
                                          :prefix ""}}))
 
-(fn setup-surround-keymaps []
-  (vim.keymap.del :x :ys)
-  (vim.keymap.set :x :S ":<C-u>lua MiniSurround.add('visual')<CR>"
-                  {:silent true})
-  (vim.keymap.set :n :yss :ys_ {:remap true}))
-
 (fn setup []
   (setup-terminal-send)
-  (setup-surround-keymaps)
   (setup-paredit-autocmd)
   (setup-diagnostics)
   (setup-treesitter-autocmd))
