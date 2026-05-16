@@ -96,6 +96,11 @@
 
   programs.fish.enable = true;
 
+  programs.chromium = {
+    enable = true;
+    enablePlasmaBrowserIntegration = true;
+  };
+
   security.rtkit.enable = true;
 
   services = {

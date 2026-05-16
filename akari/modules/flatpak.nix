@@ -15,6 +15,9 @@ _:
       "com.tencent.WeChat"
       "org.qbittorrent.qBittorrent"
       "org.telegram.desktop"
+      "com.valvesoftware.Steam"
+      "com.github.Matoking.protontricks"
+      "net.davidotek.pupgui2"
     ];
   };
 }
