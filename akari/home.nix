@@ -121,7 +121,7 @@
         background-opacity = 0.85;
         font-family = "Iosevka Nerd Font";
         font-size = 16;
-        theme = "Dark Modern";
+        theme = "Modus Vivendi";
       };
     };
 
