@@ -13,6 +13,7 @@ _:
       "com.obsproject.Studio"
       "com.qq.QQ"
       "com.tencent.WeChat"
+      "com.tencent.wemeet"
       "org.qbittorrent.qBittorrent"
       "org.telegram.desktop"
       "com.valvesoftware.Steam"

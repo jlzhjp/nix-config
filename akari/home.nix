@@ -36,6 +36,7 @@
       ripgrep
       sops
       unrar
+      wl-clipboard
       yq
 
       # Development tools
