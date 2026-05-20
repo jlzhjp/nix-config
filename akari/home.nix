@@ -61,6 +61,7 @@
       # Language toolchains
       bun
       clang
+      deno
       go
       nodejs
       pnpm
@@ -68,9 +69,6 @@
       rustup
       typst
       uv
-
-      # Gaming
-      gamescope
     ];
 
     sessionVariables = {
