@@ -31,6 +31,7 @@
       distrobox
       fastfetch
       fd
+      jq
       openssl
       rclone
       ripgrep
