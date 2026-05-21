@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   pkgs,
   ...
@@ -72,7 +73,15 @@
     };
   };
 
-  networking.networkmanager.enable = true;
+  networking = {
+    networkmanager.enable = true;
+    nftables.enable = true;
+    firewall = {
+      enable = true;
+      trustedInterfaces = [ config.services.tailscale.interfaceName ];
+      allowedUDPPorts = [ config.services.tailscale.port ];
+    };
+  };
 
   nix = {
     gc = {
@@ -123,6 +132,7 @@
       jack.enable = true;
       pulse.enable = true;
     };
+    tailscale.enable = true;
     udisks2.enable = true;
     xserver.xkb = {
       layout = "us";
@@ -130,7 +140,11 @@
     };
   };
 
-  systemd.oomd.enable = true;
+  systemd = {
+    oomd.enable = true;
+    network.wait-online.enable = false;
+    services.tailscaled.serviceConfig.Environment = [ "TS_DEBUG_FIREWALL_MODE=nftables" ];
+  };
 
   time.timeZone = "Asia/Tokyo";
 
