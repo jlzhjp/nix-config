@@ -146,7 +146,7 @@
     services = {
       mihomo = {
         after = [ "mihomo-config-fetch.service" ];
-        requires = [ "mihomo-config-fetch.service" ];
+        wants = [ "mihomo-config-fetch.service" ];
       };
       mihomo-config-fetch = {
         description = "Fetch Mihomo configuration";
