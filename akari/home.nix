@@ -35,10 +35,9 @@
       openssl
       rclone
       ripgrep
-      sops
       unrar
       wl-clipboard
-      yq
+      yq-go
 
       # Development tools
       gh
