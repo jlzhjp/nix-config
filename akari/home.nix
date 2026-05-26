@@ -132,11 +132,17 @@
       settings = {
         core.pager = "delta";
         delta.navigate = true;
+        commit.gpgsign = true;
+        gpg = {
+          format = "ssh";
+          ssh.allowedSignersFile = "${config.xdg.configHome}/git/allowed_signers";
+        };
         interactive.diffFilter = "delta --color-only";
         merge.conflictStyle = "zdiff3";
         user = {
           email = "jvjdev@gmail.com";
           name = "akari";
+          signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILK9mbY23GXiMBEuoOnRFHOVQbfjbkJDMYKMy+8Jgjc2";
         };
       };
     };
@@ -153,5 +159,8 @@
   };
 
   xdg.configFile."fish/config.fish".force = true;
+  xdg.configFile."git/allowed_signers".text = ''
+    jvjdev@gmail.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILK9mbY23GXiMBEuoOnRFHOVQbfjbkJDMYKMy+8Jgjc2
+  '';
   xdg.enable = true;
 }
