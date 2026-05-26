@@ -113,6 +113,7 @@
   security.rtkit.enable = true;
 
   services = {
+    cloudflare-warp.enable = true;
     desktopManager.plasma6.enable = true;
     displayManager.plasma-login-manager.enable = true;
     flatpak.enable = true;
@@ -144,10 +145,6 @@
     oomd.enable = true;
     network.wait-online.enable = false;
     services = {
-      mihomo = {
-        after = [ "mihomo-config-fetch.service" ];
-        wants = [ "mihomo-config-fetch.service" ];
-      };
       mihomo-config-fetch = {
         description = "Fetch Mihomo configuration";
         wants = [ "network-online.target" ];
