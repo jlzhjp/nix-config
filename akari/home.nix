@@ -56,7 +56,6 @@
       fish-lsp
       gopls
       harper
-      ty
       tinymist
 
       # Language toolchains
@@ -69,7 +68,9 @@
       racket
       rustup
       typst
-      uv
+
+      # Password Manager
+      bitwarden-desktop
     ];
 
     sessionVariables = {
@@ -78,6 +79,7 @@
       MANPAGER = "nvim +Man!";
       CC = "clang";
       CXX = "clang++";
+      SSH_AUTH_SOCK = "${config.home.homeDirectory}/.bitwarden-ssh-agent.sock";
     };
   };
 
@@ -121,6 +123,7 @@
       settings = {
         background-blur = true;
         background-opacity = 0.85;
+        command = "tmux new -t terminal -s \"terminal-$(tmux list-clients | rg terminal- | wc -l)\" -A";
         font-family = "Iosevka Nerd Font";
         font-size = 16;
         theme = "Modus Vivendi";
@@ -158,9 +161,13 @@
     };
   };
 
-  xdg.configFile."fish/config.fish".force = true;
-  xdg.configFile."git/allowed_signers".text = ''
-    jvjdev@gmail.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILK9mbY23GXiMBEuoOnRFHOVQbfjbkJDMYKMy+8Jgjc2
-  '';
-  xdg.enable = true;
+  xdg = {
+    enable = true;
+    configFile = {
+      "fish/config.fish".force = true;
+      "git/allowed_signers".text = ''
+        jvjdev@gmail.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILK9mbY23GXiMBEuoOnRFHOVQbfjbkJDMYKMy+8Jgjc2
+      '';
+    };
+  };
 }

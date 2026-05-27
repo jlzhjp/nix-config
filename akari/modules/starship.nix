@@ -2,7 +2,7 @@
   programs.starship = {
     enable = true;
     enableFishIntegration = true;
-    settings = builtins.fromTOML ''
+    settings = fromTOML ''
       "$schema" = 'https://starship.rs/config-schema.json'
 
       [aws]

@@ -1,10 +1,6 @@
-{ config, ... }:
+_:
 
 {
-  home.sessionVariables = {
-    SSH_AUTH_SOCK = "${config.home.homeDirectory}/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock";
-  };
-
   services.flatpak = {
     enable = true;
 
@@ -12,7 +8,6 @@
     uninstallUnmanaged = true;
 
     packages = [
-      "com.bitwarden.desktop"
       "com.github.tchx84.Flatseal"
       "com.github.xournalpp.xournalpp"
       "com.obsproject.Studio"
