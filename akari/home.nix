@@ -70,6 +70,7 @@
       typst
 
       # Password Manager
+      bitwarden-cli
       bitwarden-desktop
     ];
 
