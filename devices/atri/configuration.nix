@@ -1,6 +1,6 @@
 {
   imports = [
-    ../common/configuration.nix
+    ../../packages/common-configuration/module.nix
     ./hardware-configuration.nix
     ../../packages/mihomo-config-fetcher/module.nix
   ];
