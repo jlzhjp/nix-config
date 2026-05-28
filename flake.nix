@@ -50,6 +50,7 @@
           fennel-ls
           fnlfmt
           luaPackages.fennel
+          nil
           nixd
           nixfmt
           statix
