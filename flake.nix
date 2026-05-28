@@ -22,6 +22,11 @@
     nix-flatpak = {
       url = "github:gmodena/nix-flatpak/latest";
     };
+
+    network-auto-login = {
+      url = "github:jlzhjp/network-auto-login";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -82,6 +87,7 @@
 
       nixosConfigurations.chii = nixpkgs.lib.nixosSystem {
         inherit system;
+        specialArgs = { inherit inputs; };
 
         modules = [
           ./chii/configuration.nix

@@ -1,10 +1,18 @@
+{ inputs, ... }:
+
 {
   imports = [
     ../common/configuration.nix
     ./hardware-configuration.nix
+    inputs.network-auto-login.nixosModules.default
   ];
 
   networking.hostName = "chii";
+
+  services.network-auto-login = {
+    enable = true;
+    credentialsFile = "/etc/network-auto-login.env";
+  };
 
   systemd.tmpfiles.rules = [
     "d /mnt/data/home 0755 root root -"
