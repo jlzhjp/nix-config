@@ -22,15 +22,11 @@
     nix-flatpak = {
       url = "github:gmodena/nix-flatpak/latest";
     };
-
-    network-auto-login = {
-      url = "github:jlzhjp/network-auto-login";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
     inputs@{
+      self,
       home-manager,
       lanzaboote,
       nixpkgs,
@@ -41,6 +37,10 @@
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
+      };
+      localPackages = {
+        mihomo-config-fetcher = pkgs.callPackage ./packages/mihomo-config-fetcher { };
+        network-auto-login = pkgs.callPackage ./packages/network-auto-login { };
       };
     in
     {
@@ -58,20 +58,23 @@
 
       formatter.${system} = pkgs.nixfmt;
 
+      packages.${system} = localPackages;
+
       homeConfigurations.akari = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
         extraSpecialArgs = { inherit inputs; };
         modules = [
-          ./akari/home.nix
+          ./users/akari/home.nix
         ];
       };
 
       nixosConfigurations.atri = nixpkgs.lib.nixosSystem {
         inherit system;
+        specialArgs = { inherit inputs self; };
 
         modules = [
-          ./atri/configuration.nix
+          ./devices/atri/configuration.nix
           lanzaboote.nixosModules.lanzaboote
           home-manager.nixosModules.home-manager
           {
@@ -79,7 +82,7 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               extraSpecialArgs = { inherit inputs; };
-              users.akari = ./akari/home.nix;
+              users.akari = ./users/akari/home.nix;
             };
           }
         ];
@@ -87,10 +90,10 @@
 
       nixosConfigurations.chii = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs self; };
 
         modules = [
-          ./chii/configuration.nix
+          ./devices/chii/configuration.nix
           lanzaboote.nixosModules.lanzaboote
           home-manager.nixosModules.home-manager
           {
@@ -98,7 +101,7 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               extraSpecialArgs = { inherit inputs; };
-              users.akari = ./akari/home.nix;
+              users.akari = ./users/akari/home.nix;
             };
           }
         ];

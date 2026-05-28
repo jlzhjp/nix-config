@@ -135,26 +135,6 @@
         "type": "github"
       }
     },
-    "network-auto-login": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1779930141,
-        "narHash": "sha256-q4n39zdY4cpPp6gsbCM/Rd36hheO8BQ7ppBTtPWnZHA=",
-        "owner": "jlzhjp",
-        "repo": "network-auto-login",
-        "rev": "6c5fa00ea1f8c5a1a199ec92162def17d0092dfe",
-        "type": "github"
-      },
-      "original": {
-        "owner": "jlzhjp",
-        "repo": "network-auto-login",
-        "type": "github"
-      }
-    },
     "nix-flatpak": {
       "locked": {
         "lastModified": 1767983141,
@@ -215,7 +195,6 @@
         "codex-cli-nix": "codex-cli-nix",
         "home-manager": "home-manager",
         "lanzaboote": "lanzaboote",
-        "network-auto-login": "network-auto-login",
         "nix-flatpak": "nix-flatpak",
         "nixpkgs": "nixpkgs"
       }

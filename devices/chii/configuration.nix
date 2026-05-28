@@ -1,13 +1,16 @@
-{ inputs, ... }:
+{ ... }:
 
 {
   imports = [
     ../common/configuration.nix
     ./hardware-configuration.nix
-    inputs.network-auto-login.nixosModules.default
+    ../../packages/mihomo-config-fetcher/module.nix
+    ../../packages/network-auto-login/module.nix
   ];
 
   networking.hostName = "chii";
+
+  services.mihomo-config-fetcher.enable = true;
 
   services.network-auto-login = {
     enable = true;

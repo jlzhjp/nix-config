@@ -145,22 +145,8 @@
     oomd.enable = true;
     network.wait-online.enable = false;
     services = {
-      mihomo-config-fetch = {
-        description = "Fetch Mihomo configuration";
-        wants = [ "network-online.target" ];
-        before = [ "mihomo.service" ];
-        after = [
-          "network-online.target"
-        ];
-        serviceConfig = {
-          Environment = [ "DENO_DIR=/var/cache/deno" ];
-          Type = "oneshot";
-          ExecStart = "${pkgs.deno}/bin/deno run --quiet --allow-net --allow-read=/etc/mihomo --allow-write=/etc/mihomo ${./fetch-mihomo-config.ts} /etc/mihomo/config-fetcher.toml";
-        };
-      };
       tailscaled.serviceConfig.Environment = [ "TS_DEBUG_FIREWALL_MODE=nftables" ];
     };
-    tmpfiles.rules = [ "d /var/cache/deno 0755 root root -" ];
   };
 
   time.timeZone = "Asia/Tokyo";
