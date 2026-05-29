@@ -1,4 +1,4 @@
-import { assertEquals, assertRejects, assertThrows } from "jsr:@std/assert@1";
+import { assertEquals, assertRejects } from "jsr:@std/assert@1";
 import {
   basicAuthHeader,
   fetchMihomoConfig,
@@ -40,14 +40,13 @@ password = "secret"
   assertEquals(config.output, "/tmp/mihomo.yaml");
 });
 
-Deno.test("parseConfig rejects missing basic auth", () => {
-  assertThrows(
-    () =>
-      parseConfig(`
+Deno.test("parseConfig accepts missing basic auth", () => {
+  const config = parseConfig(`
 url = "https://example.com/mihomo.yaml"
 user_agent = "mihomo-config-fetch-test"
-`),
-  );
+`);
+
+  assertEquals(config.basic_auth, undefined);
 });
 
 Deno.test("basicAuthHeader encodes username and password", () => {
@@ -86,6 +85,36 @@ password = "secret"
     requests[0].headers.get("authorization"),
     "Basic YWthcmk6c2VjcmV0",
   );
+  assertEquals(
+    requests[0].headers.get("user-agent"),
+    "mihomo-config-fetch-test",
+  );
+});
+
+Deno.test("fetchMihomoConfig omits authorization without basic auth", async () => {
+  const directory = await Deno.makeTempDir();
+  const configPath = `${directory}/config-fetcher.toml`;
+  const outputPath = `${directory}/config.yaml`;
+
+  await Deno.writeTextFile(
+    configPath,
+    `
+url = "https://example.com/mihomo.yaml"
+user_agent = "mihomo-config-fetch-test"
+output = "${outputPath}"
+`,
+  );
+
+  const requests: Request[] = [];
+  await fetchMihomoConfig(configPath, (input, init) => {
+    const request = new Request(input, init);
+    requests.push(request);
+
+    return Promise.resolve(new Response("mixed-port: 7890\n"));
+  });
+
+  assertEquals(requests.length, 1);
+  assertEquals(requests[0].headers.get("authorization"), null);
   assertEquals(
     requests[0].headers.get("user-agent"),
     "mihomo-config-fetch-test",

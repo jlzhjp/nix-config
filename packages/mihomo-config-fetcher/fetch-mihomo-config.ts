@@ -12,7 +12,7 @@ type Config = {
   url: string;
   user_agent: string;
   output: string;
-  basic_auth: BasicAuth;
+  basic_auth?: BasicAuth;
 };
 
 const defaultConfigPath = "/etc/mihomo/config-fetcher.toml";
@@ -24,7 +24,7 @@ const configSchema = z.object({
   basic_auth: z.object({
     username: z.string().min(1),
     password: z.string().min(1),
-  }),
+  }).optional(),
 });
 
 export function parseConfig(toml: string): Config {
@@ -44,12 +44,18 @@ export async function fetchMihomoConfig(
   const temporaryPath = `${outputPath}.tmp-${Deno.pid}`;
 
   const headers = new Headers({
-    Authorization: basicAuthHeader(
-      config.basic_auth.username,
-      config.basic_auth.password,
-    ),
     "User-Agent": config.user_agent,
   });
+
+  if (config.basic_auth) {
+    headers.set(
+      "Authorization",
+      basicAuthHeader(
+        config.basic_auth.username,
+        config.basic_auth.password,
+      ),
+    );
+  }
 
   const abortController = new AbortController();
   const timeout = setTimeout(() => abortController.abort(), 60_000);
