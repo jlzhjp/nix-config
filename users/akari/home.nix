@@ -156,7 +156,7 @@
           cane = "commit --amend --no-edit";
           aa = "add -A";
 
-          unstage = "reset HEAD --";
+          unstage = "restore --staged --";
           last = "log -1 HEAD --stat";
 
           lg = "log --oneline --graph --decorate --all";
@@ -183,13 +183,13 @@
           sd = "stash show -p";
 
           undo = "reset --soft HEAD~1";
-          discard = "checkout --";
+          discard = "restore --";
           wipe = "reset --hard HEAD";
           cleanall = "clean -fd";
 
           who = "shortlog -sn";
           root = "rev-parse --show-toplevel";
-          aliases = "config --get-regexp '^alias\\.'";
+          aliases = "config --get-regexp ^alias\\.";
         };
       };
     };
