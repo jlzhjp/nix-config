@@ -11,7 +11,6 @@
     ./modules/flatpak.nix
     ./modules/neovim.nix
     ./modules/starship.nix
-    ./modules/tmux.nix
     ./modules/wallpapers.nix
   ];
 
@@ -22,7 +21,6 @@
 
     packages = with pkgs; [
       # AI assistants
-      gemini-cli
       inputs.codex-cli-nix.packages.${pkgs.stdenv.hostPlatform.system}.default
 
       # CLI tools
@@ -124,10 +122,9 @@
       settings = {
         background-blur = true;
         background-opacity = 0.85;
-        command = "tmux new -t terminal -s \"terminal-$(tmux list-clients | rg terminal- | wc -l)\" -A";
         font-family = "Iosevka Nerd Font";
         font-size = 16;
-        theme = "Modus Vivendi";
+        theme = "Kanagawabones";
       };
     };
 
@@ -148,12 +145,66 @@
           name = "akari";
           signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILK9mbY23GXiMBEuoOnRFHOVQbfjbkJDMYKMy+8Jgjc2";
         };
+        alias = {
+          st = "status -sb";
+          co = "checkout";
+          sw = "switch";
+          br = "branch";
+          ci = "commit";
+          cm = "commit -m";
+          ca = "commit --amend";
+          cane = "commit --amend --no-edit";
+          aa = "add -A";
+
+          unstage = "reset HEAD --";
+          last = "log -1 HEAD --stat";
+
+          lg = "log --oneline --graph --decorate --all";
+          ll = "log --oneline --decorate -20";
+          lga = "log --graph --pretty=format:'%C(yellow)%h%Creset %C(cyan)%ad%Creset %C(auto)%d%Creset %s %Cgreen(%an)%Creset' --date=short --all";
+
+          df = "diff";
+          dfs = "diff --staged";
+          dfh = "diff HEAD";
+          dft = "difftool";
+
+          rb = "rebase";
+          rbi = "rebase -i";
+          cp = "cherry-pick";
+          mt = "mergetool";
+
+          pl = "pull --ff-only";
+          ps = "push";
+          pf = "push --force-with-lease";
+
+          save = "stash push -u -m";
+          pop = "stash pop";
+          sl = "stash list";
+          sd = "stash show -p";
+
+          undo = "reset --soft HEAD~1";
+          discard = "checkout --";
+          wipe = "reset --hard HEAD";
+          cleanall = "clean -fd";
+
+          who = "shortlog -sn";
+          root = "rev-parse --show-toplevel";
+          aliases = "config --get-regexp '^alias\\.'";
+        };
       };
     };
 
     nh = {
       enable = true;
       flake = "${config.home.homeDirectory}/nix-config";
+    };
+
+    zellij = {
+      enable = true;
+      enableFishIntegration = true;
+      settings = {
+        theme = "kanagawa";
+      };
     };
 
     zoxide = {
@@ -166,6 +217,7 @@
     enable = true;
     configFile = {
       "fish/config.fish".force = true;
+      "zellij/config.kdl".force = true;
       "git/allowed_signers".text = ''
         jvjdev@gmail.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILK9mbY23GXiMBEuoOnRFHOVQbfjbkJDMYKMy+8Jgjc2
       '';

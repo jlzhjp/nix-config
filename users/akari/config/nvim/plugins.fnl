@@ -15,6 +15,6 @@
                  (gh :b0o/SchemaStore.nvim)
                  (gh :stevearc/conform.nvim)
                  (gh :hiphish/rainbow-delimiters.nvim)
-                 (gh :miikanissi/modus-themes.nvim)]))
+                 (gh :rebelot/kanagawa.nvim)]))
 
 {: add}

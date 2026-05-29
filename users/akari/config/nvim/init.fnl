@@ -60,4 +60,4 @@
                                                   :schemas))}}})
   ((. behavior :setup))
   ((. keymaps :setup))
-  (vim.cmd "colorscheme modus_vivendi"))
+  (vim.cmd "colorscheme kanagawa"))
