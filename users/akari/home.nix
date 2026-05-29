@@ -170,7 +170,7 @@
 
           rb = "rebase";
           rbi = "rebase -i";
-          cp = "cherry-pick";
+          pick = "cherry-pick";
           mt = "mergetool";
 
           pl = "pull --ff-only";
