@@ -49,6 +49,14 @@ user_agent = "mihomo-config-fetch-test"
   assertEquals(config.basic_auth, undefined);
 });
 
+Deno.test("parseConfig accepts missing user agent", () => {
+  const config = parseConfig(`
+url = "https://example.com/mihomo.yaml"
+`);
+
+  assertEquals(config.user_agent, undefined);
+});
+
 Deno.test("basicAuthHeader encodes username and password", () => {
   assertEquals(basicAuthHeader("akari", "secret"), "Basic YWthcmk6c2VjcmV0");
 });
@@ -119,6 +127,31 @@ output = "${outputPath}"
     requests[0].headers.get("user-agent"),
     "mihomo-config-fetch-test",
   );
+});
+
+Deno.test("fetchMihomoConfig omits user-agent without configured user agent", async () => {
+  const directory = await Deno.makeTempDir();
+  const configPath = `${directory}/config-fetcher.toml`;
+  const outputPath = `${directory}/config.yaml`;
+
+  await Deno.writeTextFile(
+    configPath,
+    `
+url = "https://example.com/mihomo.yaml"
+output = "${outputPath}"
+`,
+  );
+
+  const requests: Request[] = [];
+  await fetchMihomoConfig(configPath, (input, init) => {
+    const request = new Request(input, init);
+    requests.push(request);
+
+    return Promise.resolve(new Response("mixed-port: 7890\n"));
+  });
+
+  assertEquals(requests.length, 1);
+  assertEquals(requests[0].headers.get("user-agent"), null);
 });
 
 Deno.test("fetchMihomoConfig rejects empty responses", async () => {

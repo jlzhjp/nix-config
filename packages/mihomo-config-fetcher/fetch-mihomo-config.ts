@@ -10,7 +10,7 @@ type BasicAuth = {
 
 type Config = {
   url: string;
-  user_agent: string;
+  user_agent?: string;
   output: string;
   basic_auth?: BasicAuth;
 };
@@ -19,7 +19,7 @@ const defaultConfigPath = "/etc/mihomo/config-fetcher.toml";
 const defaultOutputPath = "/etc/mihomo/config.yaml";
 const configSchema = z.object({
   url: z.url(),
-  user_agent: z.string().min(1),
+  user_agent: z.string().min(1).optional(),
   output: z.string().min(1).default(defaultOutputPath),
   basic_auth: z.object({
     username: z.string().min(1),
@@ -43,9 +43,11 @@ export async function fetchMihomoConfig(
   const outputPath = config.output;
   const temporaryPath = `${outputPath}.tmp-${Deno.pid}`;
 
-  const headers = new Headers({
-    "User-Agent": config.user_agent,
-  });
+  const headers = new Headers();
+
+  if (config.user_agent) {
+    headers.set("User-Agent", config.user_agent);
+  }
 
   if (config.basic_auth) {
     headers.set(
