@@ -30,6 +30,7 @@
       fastfetch
       fd
       jq
+      mosh
       openssl
       rclone
       ripgrep
