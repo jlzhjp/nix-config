@@ -11,6 +11,7 @@
     ./modules/flatpak.nix
     ./modules/neovim.nix
     ./modules/starship.nix
+    ./modules/tmux.nix
     ./modules/wallpapers.nix
   ];
 
@@ -123,6 +124,7 @@
       settings = {
         background-blur = true;
         background-opacity = 0.85;
+        command = "tmux new -t terminal -s \"terminal-$(tmux list-clients | rg terminal- | wc -l)\" -A";
         font-family = "Iosevka Nerd Font";
         font-size = 16;
         theme = "Kanagawabones";
@@ -200,14 +202,6 @@
       flake = "${config.home.homeDirectory}/nix-config";
     };
 
-    zellij = {
-      enable = true;
-      enableFishIntegration = true;
-      settings = {
-        theme = "kanagawa";
-      };
-    };
-
     zoxide = {
       enable = true;
       enableFishIntegration = true;
@@ -218,7 +212,6 @@
     enable = true;
     configFile = {
       "fish/config.fish".force = true;
-      "zellij/config.kdl".force = true;
       "git/allowed_signers".text = ''
         jvjdev@gmail.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILK9mbY23GXiMBEuoOnRFHOVQbfjbkJDMYKMy+8Jgjc2
       '';
