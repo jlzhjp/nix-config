@@ -9,7 +9,6 @@
   imports = [
     inputs.nix-flatpak.homeManagerModules.nix-flatpak
     ./modules/flatpak.nix
-    ./modules/doom-emacs.nix
     ./modules/ghostty.nix
     ./modules/git.nix
     ./modules/neovim.nix
@@ -140,6 +139,10 @@
   xdg = {
     enable = true;
     configFile = {
+      "doom" = {
+        source = ./config/doom;
+        force = true;
+      };
       "fish/config.fish".force = true;
       "git/allowed_signers".text = ''
         jvjdev@gmail.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILK9mbY23GXiMBEuoOnRFHOVQbfjbkJDMYKMy+8Jgjc2
