@@ -1,4 +1,4 @@
-_:
+{ pkgs, ... }:
 
 {
   programs.tmux = {
@@ -13,9 +13,20 @@ _:
     prefix = "C-a";
     terminal = "tmux-256color";
 
+    plugins = with pkgs.tmuxPlugins; [
+      sensible
+      yank
+      copycat
+      open
+      prefix-highlight
+      resurrect
+      continuum
+    ];
+
     extraConfig = ''
       set -g renumber-windows on
       set -g set-clipboard on
+      set -g @continuum-restore 'on'
 
       # Enable true color when the outer terminal supports it.
       set -as terminal-features ",xterm-256color:RGB"
