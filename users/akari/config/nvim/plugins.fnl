@@ -15,6 +15,6 @@
                  (gh :b0o/SchemaStore.nvim)
                  (gh :stevearc/conform.nvim)
                  (gh :hiphish/rainbow-delimiters.nvim)
-                 (gh :rebelot/kanagawa.nvim)]))
+                 (gh :shatur/neovim-ayu)]))
 
 {: add}

@@ -15,18 +15,35 @@
 
     plugins = with pkgs.tmuxPlugins; [
       sensible
+      {
+        plugin = dotbar;
+        extraConfig = ''
+          set -g @tmux-dotbar-bg "#0b0e14"
+          set -g @tmux-dotbar-fg "#475266"
+          set -g @tmux-dotbar-fg-current "#bfbdb6"
+          set -g @tmux-dotbar-fg-session "#565b66"
+          set -g @tmux-dotbar-fg-prefix "#95e6cb"
+          set -g @tmux-dotbar-right true
+          set -g @tmux-dotbar-status-right " Continuum: #{continuum_status} %H:%M "
+        '';
+      }
       yank
       copycat
       open
       prefix-highlight
       resurrect
-      continuum
+      {
+        plugin = continuum;
+        extraConfig = ''
+          set -g @continuum-save-interval '15'
+          set -g @continuum-restore 'on'
+        '';
+      }
     ];
 
     extraConfig = ''
       set -g renumber-windows on
       set -g set-clipboard on
-      set -g @continuum-restore 'on'
 
       # Enable true color when the outer terminal supports it.
       set -as terminal-features ",xterm-256color:RGB"

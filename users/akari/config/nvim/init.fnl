@@ -60,4 +60,4 @@
                                                   :schemas))}}})
   ((. behavior :setup))
   ((. keymaps :setup))
-  (vim.cmd "colorscheme kanagawa"))
+  (vim.cmd "colorscheme ayu"))
