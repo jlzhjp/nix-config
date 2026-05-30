@@ -57,6 +57,7 @@
 
       # Language servers and formatters
       clang-tools
+      clojure-lsp
       fish-lsp
       gopls
       harper
@@ -65,6 +66,7 @@
       # Language toolchains
       bun
       clang
+      clojure
       deno
       go
       nodejs
