@@ -69,6 +69,7 @@
       clojure
       deno
       go
+      neil
       nodejs
       pnpm
       racket
