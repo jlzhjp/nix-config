@@ -53,6 +53,7 @@
     source-han-sans
     source-han-serif
     geist-font
+    symbola
     nerd-fonts.fira-code
     nerd-fonts.iosevka
     nerd-fonts.iosevka-term

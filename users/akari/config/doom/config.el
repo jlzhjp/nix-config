@@ -34,6 +34,9 @@
 ;; `load-theme' function. This is the default:
 (setq doom-theme 'doom-one)
 
+;; Keep Emacs subprocesses on a POSIX shell even when the login shell is Fish.
+(setq shell-file-name (executable-find "bash"))
+
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
@@ -41,6 +44,22 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
+
+(after! lispyville
+  (setq lispyville-key-theme
+        '((operators normal)
+          c-w
+          (prettify insert)
+          (atom-movement t)
+          slurp/barf-lispy
+          additional
+          additional-insert))
+  (lispyville-set-key-theme)
+  (map! :map lispy-mode-map-lispy
+        "[" nil
+        "]" nil
+        "M-[" #'lispyville-previous-opening
+        "M-]" #'lispyville-next-closing))
 
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
