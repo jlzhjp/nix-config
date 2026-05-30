@@ -9,6 +9,7 @@
   imports = [
     inputs.nix-flatpak.homeManagerModules.nix-flatpak
     ./modules/flatpak.nix
+    ./modules/doom-emacs.nix
     ./modules/ghostty.nix
     ./modules/git.nix
     ./modules/neovim.nix
