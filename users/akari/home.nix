@@ -66,6 +66,7 @@
       bun
       clang
       clojure
+      cmake
       deno
       go
       neil
