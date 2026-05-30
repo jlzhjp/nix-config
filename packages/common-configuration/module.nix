@@ -36,8 +36,6 @@
     };
   };
 
-  console.useXkbConfig = true;
-
   environment.systemPackages = with pkgs; [
     efibootmgr
     sbctl
@@ -120,6 +118,16 @@
     displayManager.plasma-login-manager.enable = true;
     flatpak.enable = true;
     fwupd.enable = true;
+    keyd = {
+      enable = true;
+      keyboards.default = {
+        ids = [ "*" ];
+        settings.main = {
+          capslock = "overload(control, esc)";
+          esc = "capslock";
+        };
+      };
+    };
     libinput.enable = true;
     mihomo = {
       configFile = "/etc/mihomo/config.yaml";
@@ -137,10 +145,6 @@
     };
     tailscale.enable = true;
     udisks2.enable = true;
-    xserver.xkb = {
-      layout = "us";
-      options = "caps:swapescape";
-    };
   };
 
   systemd = {

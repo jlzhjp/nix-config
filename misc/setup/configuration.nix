@@ -25,8 +25,16 @@
   };
 
   # Muscle memory.
-  services.xserver.xkb.options = "caps:swapescape";
-  console.useXkbConfig = true;
+  services.keyd = {
+    enable = true;
+    keyboards.default = {
+      ids = [ "*" ];
+      settings.main = {
+        capslock = "overload(control, esc)";
+        esc = "capslock";
+      };
+    };
+  };
 
   # Enable flakes.
   nix.settings = {
