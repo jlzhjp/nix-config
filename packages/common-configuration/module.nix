@@ -56,6 +56,7 @@
     nerd-fonts.fira-code
     nerd-fonts.iosevka
     nerd-fonts.iosevka-term
+    nerd-fonts.symbols-only
   ];
 
   i18n = {
