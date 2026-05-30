@@ -50,6 +50,7 @@
       tree-sitter
 
       # Editors
+      emacs-pgtk
       vscode
       zed-editor
 
