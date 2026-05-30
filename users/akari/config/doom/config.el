@@ -23,6 +23,8 @@
 ;;
 (setq doom-font (font-spec :family "Iosevka Nerd Font" :size 18 :weight 'regular)
      doom-variable-pitch-font (font-spec :family "Iosevka Nerd Font" :size 20))
+
+(setq doom-localleader-key ",")
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -44,6 +46,9 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
+
+;; Keep Vim's normal-mode s/S behavior instead of Doom's evil-snipe remap.
+(remove-hook 'doom-first-input-hook #'evil-snipe-mode)
 
 (after! lispyville
   (setq lispyville-key-theme
