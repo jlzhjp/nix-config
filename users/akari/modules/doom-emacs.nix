@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   xdg.configFile."doom" = {
@@ -6,10 +11,10 @@
     force = true;
   };
 
-  home.activation.doomSync = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+  home.activation.doomSync = lib.hm.dag.entryAfter [ "installPackages" ] ''
     doom="${config.home.homeDirectory}/.config/emacs/bin/doom"
     if [ -x "$doom" ]; then
-      run "$doom" sync
+      run env EMACS="${lib.getExe pkgs.emacs-pgtk}" "$doom" sync
     fi
   '';
 }
