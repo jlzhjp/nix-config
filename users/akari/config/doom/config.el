@@ -50,6 +50,14 @@
 ;; Keep Vim's normal-mode s/S behavior instead of Doom's evil-snipe remap.
 (remove-hook 'doom-first-input-hook #'evil-snipe-mode)
 
+;; Prefer conventional paredit-style delimiter editing in lispy buffers.
+(setq lispy-key-theme '(special paredit c-digits))
+
+(after! lispy
+  (map! :map lispy-mode-map-paredit
+        "RET" #'newline-and-indent
+        "C-j" #'newline-and-indent))
+
 (after! lispyville
   (setq lispyville-key-theme
         '((operators normal)
@@ -59,12 +67,7 @@
           slurp/barf-lispy
           additional
           additional-insert))
-  (lispyville-set-key-theme)
-  (map! :map lispy-mode-map-lispy
-        "[" nil
-        "]" nil
-        "M-[" #'lispyville-previous-opening
-        "M-]" #'lispyville-next-closing))
+  (lispyville-set-key-theme))
 
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
