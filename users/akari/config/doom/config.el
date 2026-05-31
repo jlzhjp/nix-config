@@ -51,12 +51,7 @@
 (remove-hook 'doom-first-input-hook #'evil-snipe-mode)
 
 ;; Prefer conventional paredit-style delimiter editing in lispy buffers.
-(setq lispy-key-theme '(special paredit c-digits))
-
-(after! lispy
-  (map! :map lispy-mode-map-paredit
-        "RET" #'newline-and-indent
-        "C-j" #'newline-and-indent))
+; (setq lispy-key-theme '(special paredit c-digits))
 
 (after! lispyville
   (setq lispyville-key-theme
@@ -68,7 +63,6 @@
           additional
           additional-insert))
   (lispyville-set-key-theme))
-
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `with-eval-after-load' block, otherwise Doom's defaults may override your
