@@ -35,6 +35,11 @@ export function basicAuthHeader(username: string, password: string): string {
   return `Basic ${encodeBase64(`${username}:${password}`)}`;
 }
 
+function sourceForLog(url: string): string {
+  const parsed = new URL(url);
+  return `${parsed.origin}${parsed.pathname}`;
+}
+
 export async function fetchMihomoConfig(
   configPath = defaultConfigPath,
   fetcher: typeof fetch = fetch,
@@ -42,6 +47,11 @@ export async function fetchMihomoConfig(
   const config = parseConfig(await Deno.readTextFile(configPath));
   const outputPath = config.output;
   const temporaryPath = `${outputPath}.tmp-${Deno.pid}`;
+  const source = sourceForLog(config.url);
+
+  console.info(
+    `Fetching Mihomo configuration from ${source} using ${configPath}`,
+  );
 
   const headers = new Headers();
 
@@ -84,6 +94,9 @@ export async function fetchMihomoConfig(
     await Deno.writeTextFile(temporaryPath, body, { mode: 0o600 });
     await Deno.rename(temporaryPath, outputPath);
     await Deno.chmod(outputPath, 0o600);
+    console.info(
+      `Fetched Mihomo configuration to ${outputPath} (${body.length} bytes)`,
+    );
   } finally {
     clearTimeout(timeout);
 
@@ -98,5 +111,15 @@ export async function fetchMihomoConfig(
 }
 
 if (import.meta.main) {
-  await fetchMihomoConfig(Deno.args[0] ?? defaultConfigPath);
+  const configPath = Deno.args[0] ?? defaultConfigPath;
+
+  try {
+    await fetchMihomoConfig(configPath);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    console.error(
+      `Failed to fetch Mihomo configuration using ${configPath}: ${message}`,
+    );
+    Deno.exit(1);
+  }
 }

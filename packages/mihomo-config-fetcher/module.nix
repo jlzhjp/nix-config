@@ -34,8 +34,11 @@ in
     systemd.services.mihomo-config-fetcher = {
       description = "Fetch Mihomo configuration";
       wants = [ "network-online.target" ];
+      wantedBy = [ "mihomo.service" ];
       before = [ "mihomo.service" ];
       after = [ "network-online.target" ];
+
+      unitConfig.ConditionPathExists = cfg.configFile;
 
       serviceConfig = {
         Environment = [ "DENO_DIR=${cfg.denoCacheDir}" ];
