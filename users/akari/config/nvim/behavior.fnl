@@ -143,4 +143,4 @@
   (setup-diagnostics)
   (setup-treesitter-autocmd))
 
-{: setup}
+{: setup :setup-paredit setup-paredit-autocmd}

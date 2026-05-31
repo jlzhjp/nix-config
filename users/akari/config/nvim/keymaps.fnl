@@ -112,11 +112,6 @@
     (leader-maps xmap-leader
                  [[:lf
                    "<Cmd>lua require(\"conform\").format()<CR>"
-                   "Format selection"]])
-    ;; Surround
-    (vim.keymap.del :x :ys)
-    (vim.keymap.set :x :S ":<C-u>lua MiniSurround.add('visual')<CR>"
-                    {:silent true})
-    (vim.keymap.set :n :yss :ys_ {:remap true})))
+                   "Format selection"]])))
 
 {: setup}

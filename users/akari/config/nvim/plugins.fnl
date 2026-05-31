@@ -2,6 +2,11 @@
 
 (local gh (fn [repo] (.. "https://github.com/" repo)))
 
+(fn add-vscode []
+  (vim.pack.add [(gh :tpope/vim-repeat)
+                 (gh :tpope/vim-surround)
+                 (gh :julienvincent/nvim-paredit)]))
+
 (fn add []
   (vim.pack.add [(gh :nvim-treesitter/nvim-treesitter)
                  (gh :neovim/nvim-lspconfig)
@@ -11,10 +16,11 @@
                  (gh :folke/which-key.nvim)
                  (gh :tpope/vim-sleuth)
                  (gh :tpope/vim-repeat)
+                 (gh :tpope/vim-surround)
                  (gh :julienvincent/nvim-paredit)
                  (gh :b0o/SchemaStore.nvim)
                  (gh :stevearc/conform.nvim)
                  (gh :hiphish/rainbow-delimiters.nvim)
                  (gh :shatur/neovim-ayu)]))
 
-{: add}
+{: add : add-vscode}
