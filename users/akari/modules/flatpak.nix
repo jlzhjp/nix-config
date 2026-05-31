@@ -3,9 +3,12 @@ _:
 {
   services.flatpak = {
     enable = true;
-
-    update.onActivation = true;
     uninstallUnmanaged = true;
+
+    update.auto = {
+      enable = true;
+      onCalendar = "weekly";
+    };
 
     packages = [
       "com.github.tchx84.Flatseal"
