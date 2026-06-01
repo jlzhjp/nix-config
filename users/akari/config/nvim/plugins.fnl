@@ -21,6 +21,6 @@
                  (gh :b0o/SchemaStore.nvim)
                  (gh :stevearc/conform.nvim)
                  (gh :hiphish/rainbow-delimiters.nvim)
-                 (gh :shatur/neovim-ayu)]))
+                 (gh :catppuccin/nvim)]))
 
 {: add : add-vscode}

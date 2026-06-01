@@ -56,4 +56,4 @@
                                                       :schemas))}}})
       ((. behavior :setup))
       ((. keymaps :setup))
-      (vim.cmd "colorscheme ayu")))
+      (vim.cmd "colorscheme catppuccin-mocha")))

@@ -18,7 +18,7 @@
                 [:switchbuf :usetab]
                 [:undofile true]
                 [:shada "'100,<50,s10,:1000,/100,@100,h"]])
-  ((. (require :vim._core.ui2) :enable))
+  ; ((. (require :vim._core.ui2) :enable))
   (vim.cmd "filetype plugin indent on")
   (when (not= (vim.fn.exists :syntax_on) 1)
     (vim.cmd "syntax enable"))
@@ -51,7 +51,7 @@
                       [:foldtext ""]])
   (set-options vim.o [[:autoindent true]
                       [:expandtab true]
-                      [:formatoptions :rqnl1j]
+                      [:formatoptions :rqnl1jmM]
                       [:ignorecase true]
                       [:incsearch true]
                       [:infercase true]
