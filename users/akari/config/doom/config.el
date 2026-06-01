@@ -50,19 +50,24 @@
 ;; Keep Vim's normal-mode s/S behavior instead of Doom's evil-snipe remap.
 (remove-hook 'doom-first-input-hook #'evil-snipe-mode)
 
-;; Prefer conventional paredit-style delimiter editing in lispy buffers.
-; (setq lispy-key-theme '(special paredit c-digits))
+;; Use paredit for structural editing in Lisp-family buffers.
+(defun akari/enable-paredit-mode ()
+  (when (bound-and-true-p smartparens-mode)
+    (smartparens-mode -1))
+  (paredit-mode 1))
 
-(after! lispyville
-  (setq lispyville-key-theme
-        '((operators normal)
-          c-w
-          (prettify insert)
-          (atom-movement t)
-          slurp/barf-lispy
-          additional
-          additional-insert))
-  (lispyville-set-key-theme))
+(use-package! paredit
+  :hook ((clojure-mode
+          clojure-ts-mode
+          clojurescript-mode
+          clojurescript-ts-mode
+          clojurec-mode
+          clojurec-ts-mode
+          emacs-lisp-mode
+          lisp-interaction-mode
+          ielm-mode
+          eval-expression-minibuffer-setup)
+         . akari/enable-paredit-mode))
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `with-eval-after-load' block, otherwise Doom's defaults may override your
