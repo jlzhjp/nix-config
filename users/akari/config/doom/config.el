@@ -50,24 +50,53 @@
 ;; Keep Vim's normal-mode s/S behavior instead of Doom's evil-snipe remap.
 (remove-hook 'doom-first-input-hook #'evil-snipe-mode)
 
-;; Use paredit for structural editing in Lisp-family buffers.
-(defun akari/enable-paredit-mode ()
-  (when (bound-and-true-p smartparens-mode)
-    (smartparens-mode -1))
-  (paredit-mode 1))
+;; Vim-sexp style structural editing for Lisp-family buffers.
+(after! smartparens
+  (defun akari/sp-raise-compound-form ()
+    (interactive)
+    (let ((current-prefix-arg '(16)))
+      (call-interactively #'sp-raise-sexp)))
 
-(use-package! paredit
-  :hook ((clojure-mode
-          clojure-ts-mode
-          clojurescript-mode
-          clojurescript-ts-mode
-          clojurec-mode
-          clojurec-ts-mode
-          emacs-lisp-mode
-          lisp-interaction-mode
-          ielm-mode
-          eval-expression-minibuffer-setup)
-         . akari/enable-paredit-mode))
+  (map! :mode (clojure-mode
+               clojure-ts-mode
+               clojurescript-mode
+               clojurescript-ts-mode
+               clojurec-mode
+               clojurec-ts-mode
+               emacs-lisp-mode
+               lisp-interaction-mode
+               ielm)
+        :nv "W"  #'sp-forward-sexp
+        :nv "B"  #'sp-backward-sexp
+        :nv "E"  #'sp-next-sexp
+        :nv "gE" #'sp-previous-sexp
+        :nv ">f" #'sp-forward-sexp
+        :nv "<f" #'sp-backward-sexp
+        :nv ">e" #'sp-next-sexp
+        :nv "<e" #'sp-previous-sexp
+        :n  ">)" #'sp-forward-slurp-sexp
+        :n  "<)" #'sp-forward-barf-sexp
+        :n  ">(" #'sp-backward-barf-sexp
+        :n  "<(" #'sp-backward-slurp-sexp
+        :n  "d" (general-key-dispatch 'evil-delete
+                  "sf" #'sp-splice-sexp
+                  :timeout 0.25)
+        :n  "c" (general-key-dispatch 'evil-change
+                  "se(" #'sp-wrap-round
+                  "se)" #'sp-wrap-round
+                  "se[" #'sp-wrap-square
+                  "se]" #'sp-wrap-square
+                  "se{" #'sp-wrap-curly
+                  "se}" #'sp-wrap-curly
+                  :timeout 0.25)
+        :n  "M-S" #'sp-split-sexp
+        :n  "M-J" #'sp-join-sexp
+        :n  "M-s" #'sp-splice-sexp
+        :n  "M-r" #'sp-raise-sexp
+        :localleader
+        :n "@" #'sp-splice-sexp
+        :n "o" #'akari/sp-raise-compound-form
+        :n "O" #'sp-raise-sexp))
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `with-eval-after-load' block, otherwise Doom's defaults may override your
