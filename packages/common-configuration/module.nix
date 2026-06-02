@@ -52,6 +52,7 @@
     source-han-serif
     geist-font
     symbola
+    cascadia-code
     nerd-fonts.fira-code
     nerd-fonts.iosevka
     nerd-fonts.iosevka-term
