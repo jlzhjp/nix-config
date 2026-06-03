@@ -22,64 +22,72 @@
     homeDirectory = "/home/akari";
     stateVersion = "25.11";
 
-    packages = with pkgs; [
-      # AI assistants
-      inputs.codex-cli-nix.packages.${pkgs.stdenv.hostPlatform.system}.default
+    packages =
+      let
+        codex = inputs.codex-cli-nix.packages.${pkgs.stdenv.hostPlatform.system};
+        antigravity = inputs.antigravity-nix.packages.${pkgs.stdenv.hostPlatform.system};
+      in
+      with pkgs;
+      [
+        # AI assistants
+        codex.default
+        antigravity.default
+        antigravity.google-antigravity-cli
 
-      # CLI tools
-      bat
-      delta
-      distrobox
-      fastfetch
-      fd
-      jq
-      mosh
-      openssl
-      rclone
-      ripgrep
-      unrar
-      wl-clipboard
-      yq-go
+        # CLI tools
+        bat
+        delta
+        distrobox
+        fastfetch
+        fd
+        jq
+        mosh
+        openssl
+        rclone
+        ripgrep
+        unrar
+        wl-clipboard
+        yq-go
 
-      # Development tools
-      gh
-      git-filter-repo
-      gnumake
-      just
-      pkg-config
-      tree-sitter
+        # Development tools
+        gh
+        git-filter-repo
+        gnumake
+        just
+        pkg-config
+        tree-sitter
 
-      # Editors
-      emacs-pgtk
-      vscode
-      zed-editor
+        # Editors
+        emacs-pgtk
+        vscode
+        zed-editor
 
-      # Language servers and formatters
-      clang-tools
-      clojure-lsp
-      fish-lsp
-      gopls
-      harper
-      tinymist
+        # Language servers and formatters
+        clang-tools
+        clojure-lsp
+        fish-lsp
+        gopls
+        harper
+        tinymist
 
-      # Language toolchains
-      bun
-      clang
-      clojure
-      cmake
-      deno
-      go
-      neil
-      nodejs
-      pnpm
-      racket
-      rustup
-      typst
+        # Language toolchains
+        bun
+        clang
+        clojure
+        cmake
+        deno
+        go
+        neil
+        nodejs
+        pnpm
+        racket
+        rustup
+        typst
 
-      # Password Manager
-      bitwarden-cli
-      bitwarden-desktop
-    ];
+        # Password Manager
+        bitwarden-cli
+        bitwarden-desktop
+      ];
 
     sessionVariables = {
       EDITOR = "nvim";

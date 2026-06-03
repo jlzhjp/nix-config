@@ -17,8 +17,7 @@
                [[:mouse :a]
                 [:switchbuf :usetab]
                 [:undofile true]
-                [:shada "'100,<50,s10,:1000,/100,@100,h"]])
-  ; ((. (require :vim._core.ui2) :enable))
+                [:shada "'100,<50,s10,:1000,/100,@100,h"]]) ; ((. (require :vim._core.ui2) :enable))
   (vim.cmd "filetype plugin indent on")
   (when (not= (vim.fn.exists :syntax_on) 1)
     (vim.cmd "syntax enable"))
