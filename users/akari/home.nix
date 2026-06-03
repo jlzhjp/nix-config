@@ -57,6 +57,12 @@
         pkg-config
         tree-sitter
 
+        # Cloud Native
+        kubectl
+        kubelogin-oidc
+        kubernetes-helm
+        fluxcd
+
         # Editors
         emacs-pgtk
         vscode
