@@ -34,6 +34,9 @@
         antigravity.default
         antigravity.google-antigravity-cli
 
+        # System
+        bind
+
         # CLI tools
         bat
         delta
