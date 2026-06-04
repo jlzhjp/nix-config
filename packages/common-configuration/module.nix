@@ -59,6 +59,11 @@
     nerd-fonts.symbols-only
   ];
 
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = false;
+  };
+
   i18n = {
     defaultLocale = "en_US.UTF-8";
     inputMethod = {
