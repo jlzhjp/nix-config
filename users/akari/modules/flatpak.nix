@@ -25,6 +25,7 @@ _:
       "net.davidotek.pupgui2"
       "org.freedesktop.Platform.VulkanLayer.gamescope/x86_64/25.08"
       "com.rustdesk.RustDesk"
+      "org.sqlitebrowser.sqlitebrowser"
     ];
   };
 }
