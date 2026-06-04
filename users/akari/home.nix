@@ -33,6 +33,8 @@
         codex.default
         antigravity.default
         antigravity.google-antigravity-cli
+        opencode
+        pi-coding-agent
 
         # System
         bind
