@@ -26,6 +26,8 @@ _:
       "org.freedesktop.Platform.VulkanLayer.gamescope/x86_64/25.08"
       "com.rustdesk.RustDesk"
       "org.sqlitebrowser.sqlitebrowser"
+      "org.kde.kdenlive"
+      "info.smplayer.SMPlayer"
     ];
   };
 }
