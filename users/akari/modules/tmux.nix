@@ -44,6 +44,8 @@
     extraConfig = ''
       set -g renumber-windows on
       set -g set-clipboard on
+      set -g extended-keys on
+      set -g extended-keys-format csi-u
 
       # Enable true color when the outer terminal supports it.
       set -as terminal-features ",xterm-256color:RGB"
