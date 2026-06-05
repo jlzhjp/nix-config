@@ -17,6 +17,8 @@
     ./modules/wallpapers.nix
   ];
 
+  fonts.fontconfig.enable = false;
+
   home = {
     username = "akari";
     homeDirectory = "/home/akari";
@@ -38,6 +40,7 @@
 
         # System
         bind
+        ffmpeg-full
 
         # CLI tools
         bat
