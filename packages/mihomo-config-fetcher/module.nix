@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  self,
   ...
 }:
 
@@ -13,9 +12,9 @@ in
   options.services.mihomo-config-fetcher = {
     enable = lib.mkEnableOption "Mihomo configuration fetcher";
 
-    package =
-      lib.mkPackageOption self.packages.${pkgs.stdenv.hostPlatform.system} "mihomo-config-fetcher"
-        { };
+    package = lib.mkPackageOption {
+      mihomo-config-fetcher = pkgs.callPackage ./default.nix { };
+    } "mihomo-config-fetcher" { };
 
     configFile = lib.mkOption {
       type = lib.types.path;

@@ -31,7 +31,6 @@
 
   outputs =
     inputs@{
-      self,
       home-manager,
       lanzaboote,
       nixpkgs,
@@ -39,10 +38,7 @@
     }:
     let
       system = "x86_64-linux";
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
+      pkgs = nixpkgs.legacyPackages.${system};
       localPackages = {
         mihomo-config-fetcher = pkgs.callPackage ./packages/mihomo-config-fetcher { };
         network-auto-login = pkgs.callPackage ./packages/network-auto-login { };
@@ -77,7 +73,6 @@
 
       nixosConfigurations.atri = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit inputs self; };
 
         modules = [
           ./devices/atri/configuration.nix
@@ -96,7 +91,6 @@
 
       nixosConfigurations.chii = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit inputs self; };
 
         modules = [
           ./devices/chii/configuration.nix

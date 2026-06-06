@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  self,
   ...
 }:
 
@@ -13,9 +12,9 @@ in
   options.services.network-auto-login = {
     enable = lib.mkEnableOption "automatic network captive portal login";
 
-    package =
-      lib.mkPackageOption self.packages.${pkgs.stdenv.hostPlatform.system} "network-auto-login"
-        { };
+    package = lib.mkPackageOption {
+      network-auto-login = pkgs.callPackage ./default.nix { };
+    } "network-auto-login" { };
 
     credentialsFile = lib.mkOption {
       type = lib.types.nullOr lib.types.path;
