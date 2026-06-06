@@ -71,7 +71,7 @@
     };
 
     "/mnt/data/home" = {
-      device = "dev/mapper/cryptdata";
+      device = "/dev/mapper/cryptdata";
       fsType = "btrfs";
       options = [
         "subvol=@home"
