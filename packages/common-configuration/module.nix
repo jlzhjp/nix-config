@@ -126,8 +126,11 @@
 
     wireshark = {
       enable = true;
+      package = pkgs.wireshark;
       dumpcap.enable = true;
     };
+
+    virt-manager.enable = true;
   };
 
   security.rtkit.enable = true;
@@ -187,6 +190,7 @@
           "docker"
           "wheel"
           "wireshark"
+          "libvirtd"
         ];
         group = "akari";
         isNormalUser = true;
@@ -200,6 +204,13 @@
   virtualisation = {
     docker.enable = true;
     podman.enable = true;
+    libvirtd = {
+      enable = true;
+      qemu = {
+        package = pkgs.qemu_kvm;
+        swtpm.enable = true;
+      };
+    };
   };
 
   zramSwap = {

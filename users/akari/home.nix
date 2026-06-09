@@ -44,6 +44,7 @@
         ffmpeg-full
 
         # CLI tools
+        aria2
         bat
         delta
         distrobox
