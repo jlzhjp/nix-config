@@ -13,6 +13,7 @@
       };
       interactive.diffFilter = "delta --color-only";
       merge.conflictStyle = "zdiff3";
+      init.defaultBranch = "main";
       user = {
         email = "jvjdev@gmail.com";
         name = "akari";

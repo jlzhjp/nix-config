@@ -40,6 +40,7 @@
 
         # System
         bind
+        tcpdump
         ffmpeg-full
 
         # CLI tools

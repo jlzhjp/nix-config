@@ -28,6 +28,7 @@ _:
       "org.sqlitebrowser.sqlitebrowser"
       "org.kde.kdenlive"
       "info.smplayer.SMPlayer"
+      "org.libreoffice.LibreOffice"
     ];
   };
 }

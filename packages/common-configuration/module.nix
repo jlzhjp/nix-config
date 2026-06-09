@@ -85,7 +85,10 @@
     nftables.enable = true;
     firewall = {
       enable = true;
-      trustedInterfaces = [ config.services.tailscale.interfaceName ];
+      trustedInterfaces = [
+        "docker0"
+        config.services.tailscale.interfaceName
+      ];
       allowedUDPPorts = [ config.services.tailscale.port ];
     };
   };
@@ -113,11 +116,18 @@
     "electron-39.8.10"
   ];
 
-  programs.fish.enable = true;
+  programs = {
+    chromium = {
+      enable = true;
+      enablePlasmaBrowserIntegration = true;
+    };
 
-  programs.chromium = {
-    enable = true;
-    enablePlasmaBrowserIntegration = true;
+    fish.enable = true;
+
+    wireshark = {
+      enable = true;
+      dumpcap.enable = true;
+    };
   };
 
   security.rtkit.enable = true;
@@ -176,6 +186,7 @@
         extraGroups = [
           "docker"
           "wheel"
+          "wireshark"
         ];
         group = "akari";
         isNormalUser = true;
