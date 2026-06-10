@@ -93,6 +93,7 @@
         cmake
         deno
         go
+        micromamba
         neil
         nodejs
         pnpm
@@ -111,6 +112,7 @@
       MANPAGER = "nvim +Man!";
       CC = "clang";
       CXX = "clang++";
+      MAMBA_ROOT_PREFIX = "${config.home.homeDirectory}/.local/share/mamba";
       SSH_AUTH_SOCK = "${config.home.homeDirectory}/.bitwarden-ssh-agent.sock";
     };
   };
@@ -128,6 +130,10 @@
 
     fish = {
       enable = true;
+      interactiveShellInit = ''
+        set -gx MAMBA_NO_PROMPT 1
+        ${pkgs.micromamba}/bin/micromamba shell hook --shell fish | source
+      '';
       shellAbbrs = {
         gs = "git status --short";
         nf = "nix flake update";
@@ -141,6 +147,7 @@
         la = "eza --all --group-directories-first --git --long";
         ll = "eza --group-directories-first --git --long";
         ls = "eza --group-directories-first";
+        mamba = "micromamba";
         tree = "eza --tree";
       };
     };
