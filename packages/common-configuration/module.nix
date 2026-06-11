@@ -53,6 +53,7 @@
     geist-font
     symbola
     cascadia-code
+    newcomputermodern
     nerd-fonts.fira-code
     nerd-fonts.iosevka
     nerd-fonts.iosevka-term
