@@ -29,6 +29,7 @@ _:
       "org.kde.kdenlive"
       "info.smplayer.SMPlayer"
       "org.libreoffice.LibreOffice"
+      "md.obsidian.Obsidian"
     ];
   };
 }
