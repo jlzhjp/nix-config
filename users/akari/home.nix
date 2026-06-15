@@ -106,6 +106,8 @@
         bitwarden-desktop
       ];
 
+    sessionPath = [ "${config.home.homeDirectory}/.local/share/racket/${pkgs.racket.version}/bin" ];
+
     sessionVariables = {
       EDITOR = "nvim";
       VISUAL = "nvim";
