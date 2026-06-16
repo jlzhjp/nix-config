@@ -95,7 +95,7 @@
         go
         micromamba
         neil
-        nodejs
+        nodejs_latest
         pnpm
         racket
         rustup
