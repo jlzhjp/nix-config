@@ -89,6 +89,7 @@
       trustedInterfaces = [
         "docker0"
         "virbr0"
+        "br-*"
         config.services.tailscale.interfaceName
       ];
       allowedUDPPorts = [ config.services.tailscale.port ];
