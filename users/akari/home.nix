@@ -46,6 +46,7 @@
         # CLI tools
         aria2
         bat
+        btop
         delta
         distrobox
         fastfetch
