@@ -35,6 +35,18 @@ in
       command = "shell:${ghosttyTmuxSession}";
       font-family = "Monaspace Argon";
       font-size = 14;
+      font-feature = [
+        "ss01" # JavaScript/TypeScript (e.g., !=, ===)
+        "ss02" # Data science / C-style (e.g., <=, >=)
+        "ss03" # Functional programming (e.g., ->, ~>)
+        "ss04" # Web development (e.g., </, </>)
+        "ss05" # Python/Ruby (e.g., :=, %%)
+        "ss06" # Formatting / Math operators
+        "ss07" # Markdown / Comments (e.g., list bullets)
+        "ss08" # Regular expressions
+        "liga"
+        "calt"
+      ];
       theme = "Ayu";
     };
   };
