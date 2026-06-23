@@ -43,7 +43,8 @@
                       [:wrap false]
                       [:cursorlineopt "screenline,number"]
                       [:fillchars "eob: ,fold:╌"]
-                      [:listchars "extends:…,nbsp:␣,precedes:…,tab:> "]
+                      [:listchars
+                       "extends:›,nbsp:␣,precedes:‹,space:·,tab:»·,trail:·"]
                       [:foldlevel 10]
                       [:foldmethod :indent]
                       [:foldnestmax 10]

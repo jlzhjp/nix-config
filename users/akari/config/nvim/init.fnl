@@ -3,6 +3,7 @@
 (local plugins (include :plugins))
 (local behavior (include :behavior))
 (local keymaps (include :keymaps))
+(local ui (include :ui))
 
 (macro setup-modules [specs]
   (let [forms []]
@@ -34,9 +35,9 @@
                        :yamlls])
       (setup-modules [[:mini.basics {:options {:extra_ui true}}]
                       [:mini.files]
-                      [:mini.icons]
-                      [:mini.tabline]
-                      [:mini.statusline]])
+                      [:mini.icons]])
+      ((. (require :mini.icons) :mock_nvim_web_devicons))
+      ((. ui :setup))
       (setup-modules [[:mini.ai]
                       [:mini.jump2d]
                       [:mini.pairs]
@@ -55,5 +56,4 @@
                                                          :yaml)
                                                       :schemas))}}})
       ((. behavior :setup))
-      ((. keymaps :setup))
-      (vim.cmd "colorscheme catppuccin-mocha")))
+      ((. keymaps :setup))))

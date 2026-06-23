@@ -13,6 +13,8 @@
                  {:src (gh :nvim-mini/mini.nvim) :version :stable}
                  {:src (gh :saghen/blink.cmp)
                   :version (vim.version.range :1.*)}
+                 (gh :akinsho/bufferline.nvim)
+                 (gh :nvim-lualine/lualine.nvim)
                  (gh :folke/which-key.nvim)
                  (gh :tpope/vim-sleuth)
                  (gh :tpope/vim-repeat)
