@@ -39,7 +39,6 @@
       ((. (require :mini.icons) :mock_nvim_web_devicons))
       ((. ui :setup))
       (setup-modules [[:mini.ai]
-                      [:mini.jump2d]
                       [:mini.pairs]
                       [:mini.pick]
                       [:mini.extra]

@@ -1,6 +1,7 @@
 (local vim _G.vim)
 
 (local gh (fn [repo] (.. "https://github.com/" repo)))
+(local cb (fn [repo] (.. "https://codeberg.org/" repo)))
 
 (fn add-vscode []
   (vim.pack.add [(gh :tpope/vim-repeat)
@@ -19,6 +20,7 @@
                  (gh :tpope/vim-sleuth)
                  (gh :tpope/vim-repeat)
                  (gh :tpope/vim-surround)
+                 (cb :andyg/leap.nvim)
                  (gh :julienvincent/nvim-paredit)
                  (gh :b0o/SchemaStore.nvim)
                  (gh :stevearc/conform.nvim)

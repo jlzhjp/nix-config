@@ -114,6 +114,14 @@
                                          :source :if_many
                                          :prefix ""}}))
 
+(fn setup-leap []
+  (let [leap (require :leap)
+        jump (fn [backward]
+               (fn []
+                 ((. leap :leap) {:backward backward})))]
+    (vim.keymap.set [:n :x :o] :gs (jump false) {:desc "Leap forward"})
+    (vim.keymap.set [:n :x :o] :gS (jump true) {:desc "Leap backward"})))
+
 (fn setup-pack-commands []
   (let [pack-clean (fn []
                      (let [all-plugins (vim.pack.get)
@@ -140,6 +148,7 @@
   (setup-terminal-send)
   (setup-pack-commands)
   (setup-paredit-autocmd)
+  (setup-leap)
   (setup-diagnostics)
   (setup-treesitter-autocmd))
 
