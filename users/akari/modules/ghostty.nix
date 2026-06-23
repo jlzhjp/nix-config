@@ -33,8 +33,8 @@ in
       background-blur = true;
       background-opacity = 0.85;
       command = "shell:${ghosttyTmuxSession}";
-      font-family = "Iosevka Nerd Font";
-      font-size = 16;
+      font-family = "Monaspace Argon";
+      font-size = 14;
       theme = "Ayu";
     };
   };
