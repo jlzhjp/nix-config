@@ -38,10 +38,18 @@
     }:
     let
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+      overlays = [
+        (import ./overlays/clojure-jdk25.nix)
+      ];
+      pkgs = import nixpkgs {
+        inherit system overlays;
+      };
       localPackages = {
         mihomo-config-fetcher = pkgs.callPackage ./packages/mihomo-config-fetcher { };
         network-auto-login = pkgs.callPackage ./packages/network-auto-login { };
+      };
+      overlayModule = {
+        nixpkgs.overlays = overlays;
       };
     in
     {
@@ -75,6 +83,7 @@
         inherit system;
 
         modules = [
+          overlayModule
           ./devices/atri/configuration.nix
           lanzaboote.nixosModules.lanzaboote
           home-manager.nixosModules.home-manager
@@ -93,6 +102,7 @@
         inherit system;
 
         modules = [
+          overlayModule
           ./devices/chii/configuration.nix
           lanzaboote.nixosModules.lanzaboote
           home-manager.nixosModules.home-manager
