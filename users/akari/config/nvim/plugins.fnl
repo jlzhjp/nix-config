@@ -21,6 +21,7 @@
                  (gh :tpope/vim-repeat)
                  (gh :tpope/vim-surround)
                  (cb :andyg/leap.nvim)
+                 (gh :rafamadriz/friendly-snippets)
                  (gh :julienvincent/nvim-paredit)
                  (gh :b0o/SchemaStore.nvim)
                  (gh :stevearc/conform.nvim)
