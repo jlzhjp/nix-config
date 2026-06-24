@@ -118,7 +118,7 @@
   (let [leap (require :leap)
         jump (fn [backward]
                (fn []
-                 ((. leap :leap) {:backward backward})))]
+                 ((. leap :leap) {: backward})))]
     (vim.keymap.set [:n :x :o] :gs (jump false) {:desc "Leap forward"})
     (vim.keymap.set [:n :x :o] :gS (jump true) {:desc "Leap backward"})))
 
