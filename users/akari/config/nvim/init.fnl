@@ -43,6 +43,18 @@
                       [:mini.pick]
                       [:mini.extra]
                       [:mini.notify]
+                      [:mini.bufremove]
+                      [:mini.diff]
+                      [:mini.git]
+                      [:mini.map]
+                      [:mini.misc]
+                      [:mini.sessions
+                       {:directory (let [dir (.. (vim.fn.stdpath :data)
+                                                 :/session)]
+                                     (vim.fn.mkdir dir :p)
+                                     dir)}]
+                      [:mini.trailspace]
+                      [:mini.visits]
                       [:which-key]])
       ((. (require :blink.cmp) :setup) {:completion {:list {:selection {:preselect false}}
                                                      :menu {:border :none}}
