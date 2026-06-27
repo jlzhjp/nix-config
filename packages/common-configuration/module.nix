@@ -126,6 +126,14 @@
       enablePlasmaBrowserIntegration = true;
     };
 
+    firefox = {
+      enable = true;
+      package = pkgs.firefox-bin;
+      preferences = {
+        "widget.use-xdg-desktop-portal.file-picker" = 1;
+      };
+    };
+
     fish.enable = true;
 
     nix-ld.enable = true;
