@@ -79,28 +79,34 @@
         vscode
         zed-editor
 
-        # Language servers and formatters
-        clang-tools
-        clojure-lsp
-        fish-lsp
-        gopls
-        harper
-        tinymist
-
         # Language toolchains
+        fish-lsp
+
         bun
-        clang
-        clojure
-        cmake
         deno
-        go
-        micromamba
-        neil
         nodejs_latest
         pnpm
+        oxlint
+        oxfmt
+
+        clang
+        clang-tools
+        cmake
+
+        clojure
+        clojure-lsp
+        neil
+
+        go
+        gopls
+        harper
+
+        typst
+        tinymist
+
+        micromamba
         racket
         rustup
-        typst
 
         # Password Manager
         bitwarden-cli
