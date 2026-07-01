@@ -83,7 +83,10 @@
   };
 
   networking = {
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+      dns = "systemd-resolved";
+    };
     nftables.enable = true;
     firewall = {
       enable = true;
@@ -181,6 +184,7 @@
       jack.enable = true;
       pulse.enable = true;
     };
+    resolved.enable = true;
     tailscale.enable = true;
     udisks2.enable = true;
   };
