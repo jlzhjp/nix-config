@@ -169,6 +169,7 @@
     mihomo = {
       configFile = "/etc/mihomo/config.yaml";
       enable = true;
+      processesInfo = true;
       tunMode = true;
     };
     pipewire = {
