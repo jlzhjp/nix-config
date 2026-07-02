@@ -86,6 +86,24 @@
     networkmanager = {
       enable = true;
       dns = "systemd-resolved";
+      dispatcherScripts = [
+        {
+          source = pkgs.writeShellScript "networkmanager-meta0-resolved" ''
+            IFACE="$1"
+            STATUS="$2"
+
+            if [ "$IFACE" = "meta0" ] && [ "$STATUS" = "up" ]; then
+              resolvectl dns meta0 127.0.0.1:1053
+              resolvectl domain meta0 "~."
+            fi
+
+            if [ "$IFACE" = "meta0" ] && [ "$STATUS" = "down" ]; then
+              resolvectl revert meta0
+            fi
+          '';
+          type = "basic";
+        }
+      ];
     };
     nftables.enable = true;
     firewall = {
