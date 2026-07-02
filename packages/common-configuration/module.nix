@@ -194,6 +194,9 @@
     network.wait-online.enable = false;
     services = {
       tailscaled.serviceConfig.Environment = [ "TS_DEBUG_FIREWALL_MODE=nftables" ];
+      mihomo.serviceConfig = {
+        EnvironmentFile = "/etc/mihomo/age.env";
+      };
     };
   };
 
