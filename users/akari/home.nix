@@ -27,14 +27,11 @@
     packages =
       let
         codex = inputs.codex-cli-nix.packages.${pkgs.stdenv.hostPlatform.system};
-        antigravity = inputs.antigravity-nix.packages.${pkgs.stdenv.hostPlatform.system};
       in
       with pkgs;
       [
         # AI assistants
         codex.default
-        antigravity.default
-        antigravity.google-antigravity-cli
         opencode
         pi-coding-agent
 
