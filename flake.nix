@@ -23,6 +23,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    anki-tts = {
+      url = "github:jlzhjp/anki-tts";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

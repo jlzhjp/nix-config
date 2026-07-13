@@ -1,5 +1,25 @@
 {
   "nodes": {
+    "anki-tts": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1783932709,
+        "narHash": "sha256-oeryNi0EqDgsM9SExsnGkm0D+h1IRW1sBIlvFFVQGXk=",
+        "owner": "jlzhjp",
+        "repo": "anki-tts",
+        "rev": "259a3d9c493248f70e714157268f482e7a5f14e0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jlzhjp",
+        "repo": "anki-tts",
+        "type": "github"
+      }
+    },
     "codex-cli-nix": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -169,6 +189,7 @@
     },
     "root": {
       "inputs": {
+        "anki-tts": "anki-tts",
         "codex-cli-nix": "codex-cli-nix",
         "home-manager": "home-manager",
         "lanzaboote": "lanzaboote",

@@ -26,12 +26,14 @@
 
     packages =
       let
-        codex = inputs.codex-cli-nix.packages.${pkgs.stdenv.hostPlatform.system};
+        packageOf = input: name: input.packages.${pkgs.stdenv.hostPlatform.system}.${name};
+        codex = packageOf inputs.codex-cli-nix "default";
+        anki-tts = packageOf inputs.anki-tts "default";
       in
       with pkgs;
       [
         # AI assistants
-        codex.default
+        codex
         opencode
         pi-coding-agent
 
@@ -41,6 +43,7 @@
         ffmpeg-full
 
         # CLI tools
+        anki-tts
         aria2
         bat
         btop
