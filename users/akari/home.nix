@@ -52,8 +52,10 @@
         fastfetch
         fd
         jq
+        lsof
         mosh
         openssl
+        psmisc
         rclone
         ripgrep
         unrar
