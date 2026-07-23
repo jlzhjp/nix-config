@@ -168,6 +168,7 @@
         ls = "eza --group-directories-first";
         mamba = "micromamba";
         tree = "eza --tree";
+        vi = "nvim --clean";
       };
     };
 
