@@ -76,6 +76,9 @@
         kubernetes-helm
         fluxcd
 
+        # Database
+        sqlite
+
         # Editors
         emacs-pgtk
         vscode
