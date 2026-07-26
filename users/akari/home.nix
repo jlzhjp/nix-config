@@ -118,7 +118,12 @@
         bitwarden-desktop
       ];
 
-    sessionPath = [ "${config.home.homeDirectory}/.local/share/racket/${pkgs.racket.version}/bin" ];
+    sessionPath = [
+      "${config.home.homeDirectory}/.local/share/racket/${pkgs.racket.version}/bin"
+      # fix glycin bug in flatpak
+      "/bin"
+      "/usr/bin"
+    ];
 
     sessionVariables = {
       EDITOR = "nvim";
