@@ -177,6 +177,11 @@
   security.rtkit.enable = true;
 
   services = {
+    avahi = {
+      enable = true;
+      nssmdns4 = true;
+      openFirewall = true;
+    };
     cloudflare-warp.enable = true;
     desktopManager.plasma6.enable = true;
     displayManager.plasma-login-manager.enable = true;
@@ -207,6 +212,13 @@
       enable = true;
       jack.enable = true;
       pulse.enable = true;
+    };
+    printing = {
+      enable = true;
+      drivers = [
+        pkgs.gutenprint
+        pkgs.hplip
+      ];
     };
     resolved.enable = true;
     tailscale.enable = true;
