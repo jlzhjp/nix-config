@@ -204,6 +204,7 @@
       processesInfo = true;
       tunMode = true;
     };
+    openssh.enable = true;
     pipewire = {
       alsa = {
         enable = true;
