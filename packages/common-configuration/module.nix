@@ -143,9 +143,6 @@
   };
 
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-39.8.10"
-  ];
 
   programs = {
     chromium = {
@@ -216,9 +213,10 @@
     };
     printing = {
       enable = true;
-      drivers = [
-        pkgs.gutenprint
-        pkgs.hplip
+      drivers = with pkgs; [
+        epson-escpr2
+        gutenprint
+        hplip
       ];
     };
     resolved.enable = true;
