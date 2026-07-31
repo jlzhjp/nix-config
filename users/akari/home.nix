@@ -67,6 +67,7 @@
         git-filter-repo
         gnumake
         just
+        moon
         pkg-config
         tree-sitter
 
