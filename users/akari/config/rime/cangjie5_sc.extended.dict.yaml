@@ -3,6 +3,7 @@ version: "2025.09.27"
 sort: by_weight
 max_phrase_length: 7
 import_tables:
+  - cangjie5_sc_abbr
   - cangjie5_sc
   - cangjie5_sc_word
 ...
