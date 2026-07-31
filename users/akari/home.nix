@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   inputs,
   ...
@@ -201,5 +202,12 @@
         jvjdev@gmail.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILK9mbY23GXiMBEuoOnRFHOVQbfjbkJDMYKMy+8Jgjc2
       '';
     };
+    dataFile = lib.mapAttrs' (
+      name: _:
+      lib.nameValuePair "fcitx5/rime/${name}" {
+        source = ./config/rime/${name};
+        force = true;
+      }
+    ) (lib.filterAttrs (_: type: type == "regular") (builtins.readDir ./config/rime));
   };
 }

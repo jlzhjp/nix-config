@@ -1,0 +1,8 @@
+# 因爲【雙拼】使用的詞典就是【朙月拼音】的詞典，所以輸入方案中原有的
+# reverse_lookup/dictionary: luna_pinyin 保持不變，另外指定一項 prism
+
+patch:
+  schema/dependencies: [double_pinyin_flypy]
+  reverse_lookup/prism: double_pinyin_flypy
+  reverse_lookup/tips: 〔雙拼〕
+  reverse_lookup/preedit_format: []

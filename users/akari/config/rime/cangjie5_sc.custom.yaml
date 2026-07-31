@@ -1,0 +1,45 @@
+# Rime schema settings
+# encoding: utf-8
+
+patch:
+  translator/dictionary: cangjie5_sc.extended
+  translator/enable_user_dict: true    # 是否開啟用戶詞典
+  schema/dependencies: [double_pinyin_flypy_simp]
+  reverse_lookup/dictionary: pinyin_simp
+  reverse_lookup/prism: double_pinyin_flypy_simp
+  reverse_lookup/tips: 〔雙拼〕
+  reverse_lookup/preedit_format: []
+  abc_segmentor/extra_tags: [reverse_lookup]  # 與拼音（反查碼）混打
+
+  # reverse_lookup/prefix: "`"         # 反查鍵
+  # menu/page_size: 8                  # 每頁候選字數
+
+  # 編碼顯示格式
+  # 【格式一】小狼毫原版 : xhx （難竹難）
+  # translator/preedit_format:  # 已輸入編碼
+  #   - 'xform/^([a-z]*)$/$1\t（\U$1\E）/'
+  #   - "xlit|ABCDEFGHIJKLMNOPQRSTUVWXYZ|日月金木水火土竹戈十大中一弓人心手口尸廿山女田難卜符|"
+  # translator/comment_format:  # 編碼提示
+  #   - "xlit|abcdefghijklmnopqrstuvwxyz~|日月金木水火土竹戈十大中一弓人心手口尸廿山女田難卜符～|"
+  # reverse_lookup/comment_format:  # 反查提示
+  #   - "xlit|abcdefghijklmnopqrstuvwxyz|日月金木水火土竹戈十大中一弓人心手口尸廿山女田難卜符|"
+  # 【格式二】衹顯示倉頡字母 : 重竹難
+  # translator/preedit_format:
+  #   - 'xform/(?<![^x])x/#/'
+  #   - "xlit|abcdefghijklmnopqrstuvwxyz#|日月金木水火土竹戈十大中一弓人心手口尸廿山女田難卜片重|"
+  # translator/comment_format:
+  #   - 'xform/(?<![^x])x/#/'
+  #   - "xlit|abcdefghijklmnopqrstuvwxyz#~|日月金木水火土竹戈十大中一弓人心手口尸廿山女田難卜片重～|"
+  # reverse_lookup/comment_format:
+  #   - "xlit|abcdefghijklmnopqrstuvwxyz#~|日月金木水火土竹戈十大中一弓人心手口尸廿山女田難卜片重～|"
+  # 【格式三】衹顯示小寫英文字母 : xhx
+  # translator/preedit_format:      # 清空
+  # translator/comment_format:      # 清空
+  # reverse_lookup/comment_format:  # 清空
+  # 【格式四】衹顯示大寫英文字母 : XHX
+  # translator/preedit_format:
+  #   - 'xform/^([a-z]*)$/\U$1\E/'
+  # translator/comment_format:
+  #   - "xlit|abcdefghijklmnopqrstuvwxyz#~|ABCDEFGHIJKLMNOPQRSTUVWXYZ#~|"
+  # reverse_lookup/comment_format:
+  #   - 'xform/^([a-z]*)$/\U$1\E/'

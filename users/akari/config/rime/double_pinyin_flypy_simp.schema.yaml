@@ -1,0 +1,20 @@
+# Rime schema
+# encoding: utf-8
+
+__include: double_pinyin_flypy.schema:/
+
+schema:
+  schema_id: double_pinyin_flypy_simp
+  name: 小鶴雙拼·简化字
+  version: "0.18"
+  author:
+    - double pinyin layout by 鶴
+    - Rime schema by 佛振 <chen.sst@gmail.com>
+  description: |
+    簡化字版小鶴雙拼方案。
+  dependencies:
+    - stroke
+
+translator:
+  dictionary: pinyin_simp
+  prism: double_pinyin_flypy_simp
