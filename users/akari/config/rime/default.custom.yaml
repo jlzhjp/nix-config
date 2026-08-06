@@ -4,6 +4,6 @@ patch:
     - schema: cangjie5_sc
     - schema: double_pinyin_flypy
     - schema: double_pinyin_flypy_simp
+    - schema: japanese_kana
   "key_binder/bindings/+":
     - { when: always, accept: "Shift+space", toggle: noop }
-

@@ -1,0 +1,6 @@
+# Shared key bindings for kana translators.
+key_bindings:
+  __append:
+    - { when: composing, accept: minus, send: q }
+    - { when: has_menu, accept: equal, send: Page_Down }
+    - { when: always, accept: "Shift+space", toggle: noop }

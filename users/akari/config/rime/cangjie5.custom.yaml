@@ -2,7 +2,34 @@
 # reverse_lookup/dictionary: luna_pinyin 保持不變，另外指定一項 prism
 
 patch:
-  schema/dependencies: [double_pinyin_flypy]
+  __include: grammar:/hant_char
+  schema/dependencies: [double_pinyin_flypy, japanese_kana]
+  speller/alphabet: zyxwvutsrqponmlkjihgfedcba
+  speller/delimiter: " ;'"
+  key_binder/import_preset: null
+  key_binder/bindings:
+    __patch:
+      - key_bindings:/emacs_editing
+      - key_bindings:/move_by_word_with_tab
+      - japanese_kana:/key_bindings
+      - key_bindings:/paging_with_comma_period
+      - key_bindings:/numbered_mode_switch
+  engine/translators:
+    - punct_translator
+    - table_translator
+    - script_translator@japanese_hiragana
+    - script_translator@japanese_katakana
+    - reverse_lookup_translator
+  japanese_hiragana:
+    dictionary: japanese_kana.hiragana
+    enable_user_dict: false
+    enable_sentence: true
+    initial_quality: -1.0
+  japanese_katakana:
+    dictionary: japanese_kana.katakana
+    enable_user_dict: false
+    enable_sentence: true
+    initial_quality: -1.0
   reverse_lookup/prism: double_pinyin_flypy
   reverse_lookup/tips: 〔雙拼〕
   reverse_lookup/preedit_format: []

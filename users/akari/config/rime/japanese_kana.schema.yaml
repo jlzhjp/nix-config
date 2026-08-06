@@ -1,0 +1,70 @@
+# Rime schema
+# encoding: utf-8
+
+schema:
+  schema_id: japanese_kana
+  name: 日本語かな
+  version: "1.0"
+  author:
+    - Akari
+  dependencies:
+    - japanese_kana_katakana_data
+  description: |
+    Romaji input for hiragana and katakana without kana-to-kanji conversion.
+
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: [ かな, ASCII ]
+  - name: full_shape
+    states: [ 半角, 全角 ]
+  - name: ascii_punct
+    states: [ 。，, ．， ]
+
+engine:
+  processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - script_translator
+    - script_translator@japanese_katakana
+  filters:
+    - uniquifier
+
+speller:
+  alphabet: zyxwvutsrqponmlkjihgfedcba
+  delimiter: " '"
+
+translator:
+  dictionary: japanese_kana.hiragana
+  enable_user_dict: false
+  enable_sentence: true
+  spelling_hints: 8
+
+japanese_katakana:
+  dictionary: japanese_kana.katakana
+  enable_user_dict: false
+  enable_sentence: true
+  spelling_hints: 8
+
+punctuator:
+  import_preset: default
+
+key_binder:
+  import_preset: default
+
+recognizer:
+  import_preset: default

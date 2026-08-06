@@ -1,9 +1,13 @@
 name: "cangjie5_sc.extended"
 version: "2025.09.27"
 sort: by_weight
-max_phrase_length: 7
+# Use the simplified Essay only to weight entries already present below.
+# Limiting preset phrases to one character prevents it from generating new
+# multi-character entries, so cangjie5_sc.word remains the sole phrase table.
+vocabulary: essay-zh-hans
+max_phrase_length: 1
 import_tables:
-  - cangjie5_sc_abbr
+  - cangjie5_sc.abbr
   - cangjie5_sc
-  - cangjie5_sc_word
+  - cangjie5_sc.word
 ...
