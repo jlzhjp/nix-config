@@ -70,6 +70,7 @@
         just
         moon
         pkg-config
+        playwright-mcp
         tree-sitter
 
         # Cloud Native
