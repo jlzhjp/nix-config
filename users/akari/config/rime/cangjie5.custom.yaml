@@ -20,6 +20,8 @@ patch:
     - script_translator@japanese_hiragana
     - script_translator@japanese_katakana
     - reverse_lookup_translator
+  engine/filters/+:
+    - lua_filter@*kana_before_sentence
   japanese_hiragana:
     dictionary: japanese_kana.hiragana
     enable_user_dict: false

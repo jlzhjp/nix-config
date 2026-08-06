@@ -214,6 +214,10 @@
         }
       ) (lib.filterAttrs (_: type: type == "regular") (builtins.readDir ./config/rime))
       // {
+        "fcitx5/rime/lua/kana_before_sentence.lua" = {
+          source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/users/akari/config/rime/lua/kana_before_sentence.lua";
+          force = true;
+        };
         "fcitx5/rime/essay-zh-hans.txt" = {
           source = pkgs.fetchurl {
             url = "https://raw.githubusercontent.com/rime/rime-essay-simp/dc06d4c96ae72ad46b29e3aa824a5d1e8f721fd0/essay-zh-hans.txt";
