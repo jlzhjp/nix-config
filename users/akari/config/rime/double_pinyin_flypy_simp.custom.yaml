@@ -1,2 +1,4 @@
+# The Emoji filter is inherited; only replace its dictionary for simplified Chinese.
 patch:
   __include: grammar:/hans
+  emoji_suggestion/opencc_config: emoji_simp.json

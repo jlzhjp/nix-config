@@ -6,6 +6,14 @@
   ...
 }:
 
+let
+  rimeEmoji = pkgs.fetchFromGitHub {
+    owner = "rime";
+    repo = "rime-emoji";
+    rev = "d1dbb424124fc50452a179300c7f287dbcc0db64";
+    hash = "sha256-QqHauKSfyi+heseUTQ+gztjkdoSGGfw/jRorFxSiXOo=";
+  };
+in
 {
   imports = [
     inputs.nix-flatpak.homeManagerModules.nix-flatpak
@@ -216,6 +224,29 @@
       // {
         "fcitx5/rime/lua" = {
           source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/users/akari/config/rime/lua";
+          force = true;
+        };
+        "fcitx5/rime/opencc/emoji.json" = {
+          source = "${rimeEmoji}/opencc/emoji.json";
+          force = true;
+        };
+        "fcitx5/rime/opencc/emoji_category.txt" = {
+          source = "${rimeEmoji}/opencc/emoji_category.txt";
+          force = true;
+        };
+        "fcitx5/rime/opencc/emoji_word.txt" = {
+          source = "${rimeEmoji}/opencc/emoji_word.txt";
+          force = true;
+        };
+        "fcitx5/rime/opencc/emoji_simp.json" = {
+          source = ./config/rime/opencc/emoji_simp.json;
+          force = true;
+        };
+        "fcitx5/rime/opencc/emoji_simp.txt" = {
+          source = pkgs.fetchurl {
+            url = "https://raw.githubusercontent.com/iDvel/rime-ice/569ff3bc65dd4aec0a26b33c49c8bbdfa8b5fd57/opencc/emoji.txt";
+            hash = "sha256-8+E5Yiie7cy+kvbUxd+X2wM1fFrZSr2tPVkQq6VWcFo=";
+          };
           force = true;
         };
         "fcitx5/rime/essay-zh-hans.txt" = {
