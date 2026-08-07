@@ -80,6 +80,7 @@
         fluxcd
 
         # Database
+        duckdb
         sqlite
 
         # Editors

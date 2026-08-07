@@ -13,7 +13,6 @@ patch:
     option_name: emoji_suggestion
     tips: none
     inherit_comment: false
-  translator/dictionary: cangjie5_sc.extended
   translator/enable_user_dict: true    # 是否開啟用戶詞典
   schema/dependencies: [double_pinyin_flypy_simp, japanese_kana]
   speller/delimiter: " ;'"

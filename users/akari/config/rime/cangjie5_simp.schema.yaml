@@ -1,0 +1,34 @@
+# Rime schema
+# encoding: utf-8
+
+__include: cangjie5.schema:/
+
+schema:
+  schema_id: cangjie5_simp
+  name: 倉頡五代·简化字
+  dependencies:
+    - pinyin_simp
+
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: [ 中文, 西文 ]
+  - name: full_shape
+    states: [ 半角, 全角 ]
+  - name: zh_trad
+    states: [ 汉字, 漢字 ]
+  - name: extended_charset
+    states: [ 常用, 增廣 ]
+  - name: ascii_punct
+    states: [ 。，, ．， ]
+
+translator:
+  dictionary: cangjie5_simp
+
+reverse_lookup:
+  dictionary: pinyin_simp
+  prism: pinyin_simp
+
+simplifier:
+  opencc_config: s2t.json
+  option_name: zh_trad
