@@ -6,7 +6,7 @@ patch:
   switches/@next:
     name: emoji_suggestion
     reset: 1
-    states: ["︎", "️"]
+    states: ["🚫", "😄"]
   "engine/filters/@before 0": simplifier@emoji_suggestion
   emoji_suggestion:
     opencc_config: emoji.json
@@ -14,7 +14,6 @@ patch:
     tips: none
     inherit_comment: false
   schema/dependencies: [double_pinyin_flypy, japanese_kana]
-  speller/alphabet: zyxwvutsrqponmlkjihgfedcba
   speller/delimiter: " ;'"
   key_binder/import_preset: null
   key_binder/bindings:
