@@ -1,19 +1,4 @@
-local function is_kana_text(text)
-  if not text or text == "" then
-    return false
-  end
-
-  for _, codepoint in utf8.codes(text) do
-    local is_kana =
-      (codepoint >= 0x3040 and codepoint <= 0x30ff)
-      or (codepoint >= 0x31f0 and codepoint <= 0x31ff)
-      or (codepoint >= 0xff65 and codepoint <= 0xff9f)
-    if not is_kana then
-      return false
-    end
-  end
-  return true
-end
+local kana = require("lib.kana")
 
 local function candidate_type(candidate)
   local genuine = candidate:get_genuine()
@@ -30,7 +15,7 @@ local function filter(input, env)
     local first_sentence
     for index, candidate in ipairs(buffered) do
       if candidate_type(candidate) == "sentence"
-        and not is_kana_text(candidate.text)
+        and not kana.is_kana_text(candidate.text)
       then
         first_sentence = index
         break
@@ -45,7 +30,7 @@ local function filter(input, env)
     end
 
     local function is_full_match_kana(candidate)
-      return is_kana_text(candidate.text)
+      return kana.is_kana_text(candidate.text)
         and candidate.start == 0
         and candidate._end == input_end
     end
