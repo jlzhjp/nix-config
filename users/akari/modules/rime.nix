@@ -42,6 +42,14 @@ in
         source = "${rimeEmoji}/opencc/emoji_word.txt";
         force = true;
       };
+      "fcitx5/rime/opencc/hiragana_to_katakana.json" = {
+        source = rimeConfig + "/opencc/hiragana_to_katakana.json";
+        force = true;
+      };
+      "fcitx5/rime/opencc/hiragana_to_katakana.txt" = {
+        source = rimeConfig + "/opencc/hiragana_to_katakana.txt";
+        force = true;
+      };
       "fcitx5/rime/opencc/emoji_simp.json" = {
         source = rimeConfig + "/opencc/emoji_simp.json";
         force = true;

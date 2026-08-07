@@ -7,8 +7,6 @@ schema:
   version: "1.0"
   author:
     - Akari
-  dependencies:
-    - japanese_kana_katakana
   description: |
     Romaji input for hiragana and katakana without kana-to-kanji conversion.
 
@@ -40,8 +38,8 @@ engine:
   translators:
     - punct_translator
     - script_translator
-    - script_translator@japanese_katakana
   filters:
+    - lua_filter@*hiragana_to_katakana
     - uniquifier
 
 speller:
@@ -50,12 +48,6 @@ speller:
 
 translator:
   dictionary: japanese_kana.hiragana
-  enable_user_dict: false
-  enable_sentence: true
-  spelling_hints: 8
-
-japanese_katakana:
-  dictionary: japanese_kana.katakana
   enable_user_dict: false
   enable_sentence: true
   spelling_hints: 8

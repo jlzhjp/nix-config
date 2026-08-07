@@ -1,0 +1,18 @@
+{
+  "name": "Hiragana to Katakana",
+  "segmentation": {
+    "type": "mmseg",
+    "dict": {
+      "type": "text",
+      "file": "hiragana_to_katakana.txt"
+    }
+  },
+  "conversion_chain": [
+    {
+      "dict": {
+        "type": "text",
+        "file": "hiragana_to_katakana.txt"
+      }
+    }
+  ]
+}
