@@ -8,7 +8,7 @@ schema:
   author:
     - Akari
   dependencies:
-    - japanese_kana_katakana_data
+    - japanese_kana_katakana
   description: |
     Romaji input for hiragana and katakana without kana-to-kanji conversion.
 

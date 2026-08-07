@@ -4,7 +4,7 @@
 # Dependency schema used to compile the katakana dictionary. It is intentionally
 # absent from default.custom.yaml; users select the combined japanese_kana schema.
 schema:
-  schema_id: japanese_kana_katakana_data
+  schema_id: japanese_kana_katakana
   name: 日本語カナ辞書
   version: "1.0"
 

@@ -214,8 +214,8 @@
         }
       ) (lib.filterAttrs (_: type: type == "regular") (builtins.readDir ./config/rime))
       // {
-        "fcitx5/rime/lua/kana_before_sentence.lua" = {
-          source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/users/akari/config/rime/lua/kana_before_sentence.lua";
+        "fcitx5/rime/lua" = {
+          source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/users/akari/config/rime/lua";
           force = true;
         };
         "fcitx5/rime/essay-zh-hans.txt" = {
