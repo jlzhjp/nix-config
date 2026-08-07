@@ -1,4 +1,21 @@
-# The Emoji filter is inherited; only replace its dictionary for simplified Chinese.
+# Inherit the Emoji filter, then replace its dictionary and script conversions.
 patch:
   __include: grammar:/hans
+  switches/@2:
+    options: [zh_hant, zh_hans, zh_hant_tw]
+    reset: 1
+    states: [傳統漢字, 简化字, 臺灣字形]
+  engine/filters:
+    - simplifier@emoji_suggestion
+    - simplifier@zh_hant
+    - simplifier@zh_hant_tw
+    - uniquifier
   emoji_suggestion/opencc_config: emoji_simp.json
+  zh_hant:
+    option_name: zh_hant
+    opencc_config: s2t.json
+    tips: all
+  zh_hant_tw:
+    option_name: zh_hant_tw
+    opencc_config: s2tw.json
+    tips: all

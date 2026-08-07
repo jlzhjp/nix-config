@@ -15,8 +15,9 @@ switches:
     states: [ 中文, 西文 ]
   - name: full_shape
     states: [ 半角, 全角 ]
-  - name: zh_trad
-    states: [ 汉字, 漢字 ]
+  - options: [zh_hant, zh_hans, zh_hant_tw]
+    reset: 1
+    states: [傳統漢字, 简化字, 臺灣字形]
   - name: extended_charset
     states: [ 常用, 增廣 ]
   - name: ascii_punct
@@ -29,6 +30,12 @@ reverse_lookup:
   dictionary: pinyin_simp
   prism: pinyin_simp
 
-simplifier:
+zh_hant:
   opencc_config: s2t.json
-  option_name: zh_trad
+  option_name: zh_hant
+  tips: all
+
+zh_hant_tw:
+  opencc_config: s2tw.json
+  option_name: zh_hant_tw
+  tips: all

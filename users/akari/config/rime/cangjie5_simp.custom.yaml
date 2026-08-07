@@ -29,7 +29,8 @@ patch:
     - reverse_lookup_translator
   engine/filters:
     - simplifier@emoji_suggestion
-    - simplifier
+    - simplifier@zh_hant
+    - simplifier@zh_hant_tw
     - lua_filter@*hiragana_to_katakana
     - lua_filter@*kana_before_sentence
     - uniquifier

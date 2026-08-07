@@ -1,12 +1,27 @@
 patch:
   __include: grammar:/hant
+  switches/@2:
+    options: [zh_hant, zh_hans, zh_hant_tw]
+    states: [傳統漢字, 简化字, 臺灣字形]
   switches/@next:
     name: emoji_suggestion
     reset: 1
     states: ["🚫", "😄"]
-  "engine/filters/@before 0": simplifier@emoji_suggestion
+  engine/filters:
+    - simplifier@emoji_suggestion
+    - simplifier@zh_hans
+    - simplifier@zh_hant_tw
+    - uniquifier
   emoji_suggestion:
     opencc_config: emoji.json
     option_name: emoji_suggestion
     tips: none
     inherit_comment: false
+  zh_hans:
+    option_name: zh_hans
+    opencc_config: t2s.json
+    tips: all
+  zh_hant_tw:
+    option_name: zh_hant_tw
+    opencc_config: t2tw.json
+    tips: all

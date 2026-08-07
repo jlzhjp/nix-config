@@ -3,6 +3,9 @@
 
 patch:
   __include: grammar:/hant_char
+  switches/@2:
+    options: [zh_hant, zh_hans, zh_hant_tw]
+    states: [傳統漢字, 简化字, 臺灣字形]
   switches/@next:
     name: emoji_suggestion
     reset: 1
@@ -29,7 +32,8 @@ patch:
     - reverse_lookup_translator
   engine/filters:
     - simplifier@emoji_suggestion
-    - simplifier
+    - simplifier@zh_hans
+    - simplifier@zh_hant_tw
     - lua_filter@*hiragana_to_katakana
     - lua_filter@*kana_before_sentence
     - uniquifier
@@ -42,3 +46,11 @@ patch:
   reverse_lookup/prism: double_pinyin_flypy
   reverse_lookup/tips: 〔雙拼〕
   reverse_lookup/preedit_format: []
+  zh_hans:
+    option_name: zh_hans
+    opencc_config: t2s.json
+    tips: all
+  zh_hant_tw:
+    option_name: zh_hant_tw
+    opencc_config: t2tw.json
+    tips: all
