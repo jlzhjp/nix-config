@@ -7,12 +7,11 @@
 
 let
   rimeConfig = ../config/rime;
-  rimeEmoji = pkgs.fetchFromGitHub {
-    owner = "rime";
-    repo = "rime-emoji";
-    rev = "d1dbb424124fc50452a179300c7f287dbcc0db64";
-    hash = "sha256-QqHauKSfyi+heseUTQ+gztjkdoSGGfw/jRorFxSiXOo=";
-  };
+  rimeOpencc = rimeConfig + "/opencc";
+  rimeYamlFiles = lib.filterAttrs (name: type: type == "regular" && lib.hasSuffix ".yaml" name) (
+    builtins.readDir rimeConfig
+  );
+  rimeOpenccFiles = lib.filterAttrs (_: type: type == "regular") (builtins.readDir rimeOpencc);
 in
 {
   xdg.dataFile =
@@ -24,34 +23,17 @@ in
         source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/users/akari/config/rime/${name}";
         force = true;
       }
-    ) (lib.filterAttrs (_: type: type == "regular") (builtins.readDir rimeConfig))
+    ) rimeYamlFiles
+    // lib.mapAttrs' (
+      name: _:
+      lib.nameValuePair "fcitx5/rime/opencc/${name}" {
+        source = rimeOpencc + "/${name}";
+        force = true;
+      }
+    ) rimeOpenccFiles
     // {
       "fcitx5/rime/lua" = {
-        source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/users/akari/config/rime/lua";
-        force = true;
-      };
-      "fcitx5/rime/opencc/emoji.json" = {
-        source = "${rimeEmoji}/opencc/emoji.json";
-        force = true;
-      };
-      "fcitx5/rime/opencc/emoji_category.txt" = {
-        source = "${rimeEmoji}/opencc/emoji_category.txt";
-        force = true;
-      };
-      "fcitx5/rime/opencc/emoji_word.txt" = {
-        source = "${rimeEmoji}/opencc/emoji_word.txt";
-        force = true;
-      };
-      "fcitx5/rime/opencc/hiragana_to_katakana.json" = {
-        source = rimeConfig + "/opencc/hiragana_to_katakana.json";
-        force = true;
-      };
-      "fcitx5/rime/opencc/hiragana_to_katakana.txt" = {
-        source = rimeConfig + "/opencc/hiragana_to_katakana.txt";
-        force = true;
-      };
-      "fcitx5/rime/opencc/emoji_simp.json" = {
-        source = rimeConfig + "/opencc/emoji_simp.json";
+        source = rimeConfig + "/lua";
         force = true;
       };
       "fcitx5/rime/opencc/emoji_simp.txt" = {

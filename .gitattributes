@@ -1,6 +1,0 @@
-users/akari/config/rime/*.yaml text eol=lf
-users/akari/config/rime/lua/*.lua text eol=lf
-
-# Preserve upstream files byte-for-byte to keep future updates reviewable.
-users/akari/config/rime/cangjie5_sc.dict.yaml -text
-users/akari/config/rime/cangjie5_sc.schema.yaml -text

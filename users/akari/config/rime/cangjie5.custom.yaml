@@ -7,7 +7,6 @@ patch:
     name: emoji_suggestion
     reset: 1
     states: ["🚫", "😄"]
-  "engine/filters/@before 0": simplifier@emoji_suggestion
   emoji_suggestion:
     opencc_config: emoji.json
     option_name: emoji_suggestion
@@ -28,9 +27,13 @@ patch:
     - table_translator
     - script_translator@japanese_hiragana
     - reverse_lookup_translator
-  engine/filters/+:
+  engine/filters:
+    - simplifier@emoji_suggestion
+    - simplifier
     - lua_filter@*hiragana_to_katakana
     - lua_filter@*kana_before_sentence
+    - uniquifier
+    - single_char_filter
   japanese_hiragana:
     dictionary: japanese_kana.hiragana
     enable_user_dict: false
