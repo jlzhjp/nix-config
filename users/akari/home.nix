@@ -30,6 +30,12 @@
         packageOf = input: name: input.packages.${pkgs.stdenv.hostPlatform.system}.${name};
         codex = packageOf inputs.codex-cli-nix "default";
         anki-tts = packageOf inputs.anki-tts "default";
+        pythonEnv = pkgs.python314.withPackages (
+          ps: with ps; [
+            notebook
+            ipykernel
+          ]
+        );
       in
       with pkgs;
       [
@@ -98,6 +104,11 @@
         oxlint
         oxfmt
 
+        micromamba
+        pythonEnv
+        ty
+        uv
+
         clang
         clang-tools
         cmake
@@ -106,6 +117,7 @@
         clojure-lsp
         neil
 
+        delve
         go
         gopls
         harper
@@ -113,7 +125,6 @@
         typst
         tinymist
 
-        micromamba
         racket
         rustup
 
