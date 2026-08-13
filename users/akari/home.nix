@@ -50,6 +50,7 @@
         ffmpeg-full
 
         # CLI tools
+        age
         anki-tts
         aria2
         bat
@@ -65,6 +66,7 @@
         psmisc
         rclone
         ripgrep
+        sops
         unrar
         wl-clipboard
         yq-go
