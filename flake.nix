@@ -23,6 +23,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    codex-desktop-linux = {
+      url = "github:ilysenko/codex-desktop-linux";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     anki-tts = {
       url = "github:jlzhjp/anki-tts";
       inputs.nixpkgs.follows = "nixpkgs";

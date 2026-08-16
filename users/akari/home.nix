@@ -8,6 +8,7 @@
 {
   imports = [
     inputs.nix-flatpak.homeManagerModules.nix-flatpak
+    inputs.codex-desktop-linux.homeManagerModules.default
     ./modules/flatpak.nix
     ./modules/ghostty.nix
     ./modules/git.nix
@@ -106,7 +107,7 @@
         oxlint
         oxfmt
 
-        micromamba
+        # micromamba
         pythonEnv
         ty
         uv
@@ -154,6 +155,14 @@
   };
 
   programs = {
+    codexDesktopLinux = {
+      enable = true;
+      linuxFeatures = [
+        "read-aloud"
+        "ui-tweaks"
+      ];
+    };
+
     direnv = {
       enable = true;
       nix-direnv.enable = true;
@@ -166,10 +175,10 @@
 
     fish = {
       enable = true;
-      interactiveShellInit = ''
-        set -gx MAMBA_NO_PROMPT 1
-        ${pkgs.micromamba}/bin/micromamba shell hook --shell fish | source
-      '';
+      # interactiveShellInit = ''
+      #   set -gx MAMBA_NO_PROMPT 1
+      #   ${pkgs.micromamba}/bin/micromamba shell hook --shell fish | source
+      # '';
       shellAbbrs = {
         gs = "git status --short";
         nf = "nix flake update";
@@ -183,9 +192,11 @@
         la = "eza --all --group-directories-first --git --long";
         ll = "eza --group-directories-first --git --long";
         ls = "eza --group-directories-first";
-        mamba = "micromamba";
+        # mamba = "micromamba";
         tree = "eza --tree";
         vi = "nvim --clean";
+        bwu = "set -gx BW_SESSION (bw unlock --raw)";
+        bwl = "bw lock && set -e BW_SESSION";
       };
     };
 
